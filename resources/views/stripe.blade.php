@@ -44,7 +44,7 @@ var style = {
 // Create an instance of the card Element.
 var card = elements.create('card', {
   style: style,
-  hidePostalCode: true
+  hidePostalCode: false
 });
 
 // Add an instance of the card Element into the `card-element` <div>.

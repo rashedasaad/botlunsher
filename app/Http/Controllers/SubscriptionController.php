@@ -30,9 +30,9 @@ class SubscriptionController extends Controller
         return redirect("/payment/".$productname."/".$interval);
     }
 
-    public function card($customer_id, $user_id, $product_id, $plan_id, $email, $token_id, $zip_code, $country, $city)
+    public function card($customer_id, $user_id, $product_id, $plan_id, $email, $token_id, $country, $city)
     {
-        $card= FuncController::sentget("/sup/give", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "customer_id" => $customer_id, "user_id" => $user_id, "product_id" => $product_id, "plan_id" => $plan_id, "email" => $email, "token_id" => $token_id, "zip_code" => $zip_code, "country" => $country, "city" => $city]);
+        $card= FuncController::sentget("/sup/give", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "customer_id" => $customer_id, "user_id" => $user_id, "product_id" => $product_id, "plan_id" => $plan_id, "email" => $email, "token_id" => $token_id, "country" => $country, "city" => $city]);
         return $card;
     }
 
@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
           $getip =json_decode($getip);
      
 
-        $cad  = $this->card($customer_id, $user_id, $product_name, $plan, $email,$stripeToken, $getip->zip, $getip->countryCode,  $getip->city);
+        $cad  = $this->card($customer_id, $user_id, $product_name, $plan, $email,$stripeToken, $getip->countryCode,  $getip->city);
 
          if ($cad->res == "rash_1") {
             $request->session()->forget('products');

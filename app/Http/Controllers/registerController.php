@@ -94,7 +94,7 @@ class registerController extends Controller
 
                 $data = [
                     "subject" => "botluncher",
-                    "code_link" => "localhost:8000/user/verifiy/".$ver,
+                    "code_link" => "http://localhost:8000/user/verifiy/".$ver,
                     "body" => $code
                 ];
 
