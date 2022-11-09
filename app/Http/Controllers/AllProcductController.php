@@ -53,7 +53,7 @@ class AllProcductController extends Controller
 
 
 
-    return view("card", compact("rearrays"));
+    return view("menu", compact("rearrays"));
   }
 
   public function show(Request $request, $product)

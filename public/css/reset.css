@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #2C2C2C;
+  overflow: hidden;
+}
+
+.reset {
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  background: #1c1c1c;
+  box-shadow: max(0vw, 0em) max(-2vw, -1em) max(2vw, 2em) max(-1vw, -1em);
+  border-radius: max(0.4vw, 0.4em);
+  padding: max(1vw, 1em) max(3vw, 3em) max(1vw, 1em);
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+.reset .continer .text h1 {
+  color: white;
+  padding: max(0vw, 0em) max(0vw, 0em) max(1vw, 1em) 0;
+}
+.reset .continer .text h1 span {
+  color: #00ce79;
+}
+.reset .continer .Reset_Form {
+  position: relative;
+}
+.reset .continer .Reset_Form p {
+  display: flex;
+  align-items: center;
+}
+.reset .continer .Reset_Form p .input-box {
+  position: relative;
+  border: 1px solid transparent;
+  margin: max(1vw, 1em) max(0vw, 0em);
+  background-color: rgba(203, 203, 203, 0);
+  border-radius: 0px;
+  padding: max(0.9vw, 0.9em) max(0vw, 0em);
+  border-bottom: max(0.1vw, 0.1em) solid #00ce79;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  color: #fff;
+}
+.reset .continer .Reset_Form p .input-box::-moz-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(0.8vw, 0.8em);
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.reset .continer .Reset_Form p .input-box:-ms-input-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(0.8vw, 0.8em);
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+.reset .continer .Reset_Form p .input-box::placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(0.8vw, 0.8em);
+  transition: 0.3s;
+}
+.reset .continer .Reset_Form p .input-box:focus {
+  outline: 1;
+  padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+}
+.reset .continer .Reset_Form p .input-box:focus::-moz-placeholder {
+  color: transparent;
+}
+.reset .continer .Reset_Form p .input-box:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.reset .continer .Reset_Form p .input-box:focus::placeholder {
+  color: transparent;
+}
+.reset .continer .Reset_Form .btnnu {
+  text-align: end;
+}
+.reset .continer .Reset_Form .btnnu .btn {
+  padding: max(0.5vw, 0.5em) max(1vw, 1em);
+  border-radius: max(0.3vw, 0.3em);
+  border: none;
+  background-color: #01ef92;
+  font-weight: bold;
+}/*# sourceMappingURL=reset.css.map */

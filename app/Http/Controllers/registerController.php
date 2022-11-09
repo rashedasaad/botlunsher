@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\Mail;
 
 class registerController extends Controller
 {
-    public function index()
-    {
-        return view("register");
-    }
-
-
-
-
     public function usercheck($username, $email,$password)
     {
 
@@ -29,18 +21,20 @@ class registerController extends Controller
 
     public function store(Request $request)
     {
-        $username =  $request->input("username");
-        $email =   $request->input("email");
-        $password =   $request->input("passwordone");
-        $repassword =   $request->input("repassword");
+        $username =  $request->input("regusername");
+        $email =   $request->input("regemail");
+        $password =   $request->input("regpassword");
+        $repassword =   $request->input("regrepassword");
 
 
         $request->validate([
-            "username" => "required",
-            "email" => "required",
-            "passwordone" => "required",
-            "repassword" => "required"
+            "regusername" => "required",
+            "regemail" => "required",
+            "regpassword" => "required",
+            "regrepassword" => "required",
+            'g-recaptcha-response' => 'recaptcha'
         ]);
+
 
 
 

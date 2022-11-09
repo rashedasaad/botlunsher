@@ -25,14 +25,15 @@ use Nette\Utils\Html;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name("home");
 
-Route::get("/register",[registerController::class, 'index']);
-Route::post("/store/register",[registerController::class, 'store'])->name("register");
+
+
 
 Route::get("/login",[LoginController::class, 'index']);
 Route::post("/store/login",[LoginController::class, 'store'])->name("login");
+Route::post("/store/register",[registerController::class, 'store'])->name("register");
 Route::get("/forgetpassword",[LoginController::class, 'forgetpasswordpage']);
 Route::post("/store/forgetpassword",[LoginController::class, 'storeforgetpassword'])->name("forgetpasswordstore");
 
@@ -55,7 +56,7 @@ Route::post("/store/product",[SubscriptionController::class,  'getProduct'])->na
 Route::post('/user/subscribe',[SubscriptionController::class,  'store'])->name("subscribe");
 
 
-Route::get("/card",[AllProcductController::class,"showpproduct"])->name("plan");
+Route::get("/product",[AllProcductController::class,"showpproduct"])->name("plan");
 Route::get("/show/{product}",[AllProcductController::class,'show']);
 
 

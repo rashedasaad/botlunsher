@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #2C2C2C;
+  overflow: hidden;
+}
+
+.forget {
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  background: #1c1c1c;
+  box-shadow: max(0vw, 0em) max(-2vw, -1em) max(2vw, 2em) max(-1vw, -1em);
+  border-radius: max(0.4vw, 0.4em);
+  padding: max(1vw, 1em) max(3vw, 3em) max(1vw, 1em);
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+.forget .continer .text h1 {
+  color: white;
+  padding: max(0vw, 0em) max(0vw, 0em) max(1vw, 1em) 0;
+}
+.forget .continer .text h1 span {
+  color: #00ce79;
+}
+.forget .continer .forget_Form {
+  position: relative;
+}
+.forget .continer .forget_Form .main-form p {
+  display: flex;
+  align-items: center;
+}
+.forget .continer .forget_Form .main-form p input {
+  position: relative;
+  border: 1px solid transparent;
+  margin: max(1vw, 1em) max(0vw, 0em);
+  background-color: rgba(203, 203, 203, 0);
+  border-radius: 0px;
+  padding: max(0.9vw, 0.9em) max(0vw, 0em);
+  border-bottom: max(0.1vw, 0.1em) solid #00ce79;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  color: #fff;
+}
+.forget .continer .forget_Form .main-form p input::-moz-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.forget .continer .forget_Form .main-form p input:-ms-input-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+.forget .continer .forget_Form .main-form p input::placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  transition: 0.3s;
+}
+.forget .continer .forget_Form .main-form p input:focus {
+  outline: 1;
+  padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+}
+.forget .continer .forget_Form .main-form p input:focus::-moz-placeholder {
+  color: transparent;
+}
+.forget .continer .forget_Form .main-form p input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.forget .continer .forget_Form .main-form p input:focus::placeholder {
+  color: transparent;
+}
+.forget .continer .forget_Form .main-form .button {
+  text-align: end;
+}
+.forget .continer .forget_Form .main-form .button input {
+  padding: max(0.5vw, 0.5em) max(1vw, 1em);
+  border-radius: max(0.3vw, 0.3em);
+  border: none;
+  background-color: #01ef92;
+  font-weight: bold;
+}/*# sourceMappingURL=Forget.css.map */

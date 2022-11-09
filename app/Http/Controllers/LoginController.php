@@ -39,12 +39,13 @@ class LoginController extends Controller
     {
 
         $request->validate([
-            "username_or_email" => "required",
-            "password" => "required",
+            "loginusername" => "required",
+            "loginpassword" => "required",
+            'g-recaptcha-response' => 'recaptcha'
         ]);
 
-        $username_or_email =  $request->input("username_or_email");
-        $password =   $request->input("password");
+        $username_or_email =  $request->input("loginusername");
+        $password =   $request->input("loginpassword");
 
 
         $login = $this->loginpost($username_or_email, $password);
@@ -74,8 +75,16 @@ class LoginController extends Controller
     }
 
     public function storeforgetpassword(Request $request){
+        $request->validate([
+            "email" => "required",
+        ]);
+
 
         $email =   $request->input("email");
+
+        if(FuncController::emailfilter($email) == "fail"){
+          return redirect("/forgetpassword")->with('statusbad',"The email is not vaild");
+        }
 
        $forgetpass =  $this->forgetpassword($email);
         if($forgetpass->res == "rash_2"){
