@@ -117,13 +117,27 @@ body {
   width: 100%;
   transition: 0.3s;
   color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .login .login-container .AllForm p i {
-  margin-left: -30px;
+  margin-left: max(-1.6vw, -1.6em);
   cursor: pointer;
   color: rgb(0, 206, 121);
   font-size: max(1vw, 1em);
   z-index: 0;
+}
+@media (max-width: 1194px) {
+  .login .login-container .AllForm p i {
+    margin-left: max(-2.6vw, -2.6em);
+  }
+}
+@media (max-width: 1194px) and (max-width: 930px) {
+  .login .login-container .AllForm p i {
+    margin-left: -25px;
+  }
 }
 .login .login-container .AllForm p input::-moz-placeholder {
   font-weight: 500;
@@ -131,6 +145,8 @@ body {
   font-size: max(1vw, 1em);
   -moz-transition: 0.3s;
   transition: 0.3s;
+  -moz-user-select: none;
+       user-select: none;
 }
 .login .login-container .AllForm p input:-ms-input-placeholder {
   font-weight: 500;
@@ -138,12 +154,18 @@ body {
   font-size: max(1vw, 1em);
   -ms-transition: 0.3s;
   transition: 0.3s;
+  -ms-user-select: none;
+      user-select: none;
 }
 .login .login-container .AllForm p input::placeholder {
   font-weight: 500;
   color: white;
   font-size: max(1vw, 1em);
   transition: 0.3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .login .login-container .AllForm p input:focus {
   outline: 1;
@@ -180,10 +202,18 @@ body {
   gap: max(2vw, 2em);
   align-items: center;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  justify-content: space-between;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .login .login-container .AllForm .button input {
   background-color: #00ce79;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .login .login-container .AllForm .button a:first-child,
 .login .login-container .AllForm .button input:last-child {
@@ -219,7 +249,7 @@ body {
     padding: 12px 1px 0px;
   }
 }
-.login .login-container .createAccount {
+.login .createAccount {
   position: absolute;
   top: 0;
   left: 100%;
@@ -231,33 +261,37 @@ body {
   margin: 0 auto;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.login .login-container .createAccount .creAcc {
+.login .createAccount .creAcc {
   color: white;
   font-size: max(2vw, 2em);
-  padding: max(0vw, 0em) max(0vw, 0em) max(2vw, 2em);
+  padding: max(0vw, 0em) max(0vw, 0em) max(0.5vw, 0.5em);
+  text-align: center;
 }
 @media (max-width: 1282px) {
-  .login .login-container .createAccount .creAcc {
+  .login .createAccount .creAcc {
     font-size: max(1.7vw, 1.7em);
   }
 }
 @media (max-width: 1282px) and (max-width: 1130px) {
-  .login .login-container .createAccount .creAcc {
+  .login .createAccount .creAcc {
     font-size: max(1.4vw, 1.4em);
   }
 }
-.login .login-container .createAccount .creAcc span {
+.login .createAccount .creAcc span {
   color: #00ce79;
   font-weight: bold;
 }
-.login .login-container .createAccount .create .allform {
+.login .createAccount .create .allform {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
-.login .login-container .createAccount .create .allform input {
+.login .createAccount .create .allform input {
   border: 1px solid transparent;
   margin: max(1vw, 1em) max(0vw, 0em);
   background-color: rgba(203, 203, 203, 0);
@@ -265,61 +299,230 @@ body {
   padding: max(0.9vw, 0.9em) max(0vw, 0em);
   border-bottom: max(0.1vw, 0.1em) solid #00ce79;
   display: block;
-  width: 40%;
+  width: 90%;
   transition: 0.3s;
   color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.login .login-container .createAccount .create .allform input::-moz-placeholder {
+.login .createAccount .create .allform input::-moz-placeholder {
   font-weight: 500;
   color: white;
   font-size: max(1vw, 1em);
   -moz-transition: 0.3s;
   transition: 0.3s;
+  -moz-user-select: none;
+       user-select: none;
 }
-.login .login-container .createAccount .create .allform input:-ms-input-placeholder {
+.login .createAccount .create .allform input:-ms-input-placeholder {
   font-weight: 500;
   color: white;
   font-size: max(1vw, 1em);
   -ms-transition: 0.3s;
   transition: 0.3s;
+  -ms-user-select: none;
+      user-select: none;
 }
-.login .login-container .createAccount .create .allform input::placeholder {
+.login .createAccount .create .allform input::placeholder {
   font-weight: 500;
   color: white;
   font-size: max(1vw, 1em);
   transition: 0.3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.login .login-container .createAccount .create .allform input:focus {
+.login .createAccount .create .allform input:focus {
   outline: 0;
-  border: 1px solid #ffffff;
   padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
 }
-.login .login-container .createAccount .create .allform input:focus::-moz-placeholder {
+.login .createAccount .create .allform input:focus::-moz-placeholder {
   color: transparent;
 }
-.login .login-container .createAccount .create .allform input:focus:-ms-input-placeholder {
+.login .createAccount .create .allform input:focus:-ms-input-placeholder {
   color: transparent;
 }
-.login .login-container .createAccount .create .allform input:focus::placeholder {
+.login .createAccount .create .allform input:focus::placeholder {
   color: transparent;
 }
-.login .login-container .createAccount .create .loginAcc {
+.login .createAccount .create .allform .inputBox {
+  position: relative;
+  width: 91%;
+  padding: 5px;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1 {
+  background-color: rgba(203, 203, 203, 0);
+  border-radius: 0px;
+  padding: max(0.9vw, 0.9em) max(0vw, 0em);
+  border-bottom: max(0.1vw, 0.1em) solid #00ce79;
+  display: block;
+  width: 100%;
+  color: #fff;
+  margin: 0 auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1::-moz-placeholder {
+  font-weight: 500;
+  color: white;
+  font-size: max(1vw, 1em);
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  -moz-user-select: none;
+       user-select: none;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1:-ms-input-placeholder {
+  font-weight: 500;
+  color: white;
+  font-size: max(1vw, 1em);
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  -ms-user-select: none;
+      user-select: none;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1::placeholder {
+  font-weight: 500;
+  color: white;
+  font-size: max(1vw, 1em);
+  transition: 0.3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1:focus {
+  outline: 0;
+  padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+}
+.login .createAccount .create .allform .inputBox #Mathe_1:focus::-moz-placeholder {
+  color: transparent;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.login .createAccount .create .allform .inputBox #Mathe_1:focus::placeholder {
+  color: transparent;
+}
+.login .createAccount .create .allform .inputBox #toggl {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #00ce79;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .createAccount .create .allform .inputBox #toggl::before {
+  content: "\f070";
+  font-family: fontAwesome;
+  font-size: max(1.3vw, 1.3em);
+}
+.login .createAccount .create .allform .inputBox #toggl.hide::before {
+  content: "\f06e";
+}
+.login .createAccount .create .validation {
+  width: 100%;
+}
+.login .createAccount .create .validation ul {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  padding: 0 0 0 max(2vw, 2em);
+}
+.login .createAccount .create .validation ul .left {
+  width: 100%;
+}
+.login .createAccount .create .validation ul .left li {
+  position: relative;
+  list-style: none;
+  color: white;
+  transition: 0.5s;
+  font-size: max(1vw, 1em);
+  transition: ease 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.login .createAccount .create .validation ul .left li.valid {
+  color: rgbe(255, 255, 255, 0.5);
+  transition: ease 0.5s;
+}
+.login .createAccount .create .validation ul .left li.valid::before {
+  content: "\f058";
+  color: #00ce79;
+}
+.login .createAccount .create .validation ul .left li::before {
+  content: "\f192";
+  width: 20px;
+  height: 20px;
+  padding-right: max(0.1vw, 0.1em);
+  padding-bottom: max(0.1vw, 0.1em);
+  font-family: fontAwesome;
+  display: inline-flex;
+}
+.login .createAccount .create .validation ul .right {
+  width: 100%;
+}
+.login .createAccount .create .validation ul .right li {
+  position: relative;
+  list-style: none;
+  color: white;
+  transition: 0.5s;
+  font-size: max(1vw, 1em);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.login .createAccount .create .validation ul .right li.valid {
+  color: rgbe(255, 255, 255, 0.5);
+}
+.login .createAccount .create .validation ul .right li.valid::before {
+  content: "\f058";
+  color: #00ce79;
+}
+.login .createAccount .create .validation ul .right li::before {
+  content: "\f192";
+  width: 20px;
+  height: 20px;
+  padding-right: max(0.1vw, 0.1em);
+  padding-bottom: max(0.1vw, 0.1em);
+  font-family: fontAwesome;
+  display: inline-flex;
+}
+.login .createAccount .create .loginAcc {
   text-align: left;
-  padding: max(1vw, 1em) max(0vw, 0em) max(0.6vw, 0em);
+  margin: max(1vw, 1em) auto 0 max(2vw, 2em);
 }
-.login .login-container .createAccount .create .loginAcc p {
+.login .createAccount .create .loginAcc p {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   color: #00ce79;
   font-size: max(1vw, 1em);
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.login .login-container .createAccount .create .button {
+.login .createAccount .create .button {
   text-align: end;
   width: 100%;
 }
-.login .login-container .createAccount .create .button input {
+.login .createAccount .create .button input {
   padding: max(1vw, 1em) max(1vw, 1em);
   border-radius: max(0.4vw, 0.4em);
   background-color: #00ce79;
@@ -327,7 +530,7 @@ body {
   font-weight: bold;
 }
 @media (max-width: 1698px) {
-  .login .login-container .createAccount .create .button input {
+  .login .createAccount .create .button input {
     padding: max(0.8vw, 0.8em) max(0.9vw, 0.9em);
   }
 }

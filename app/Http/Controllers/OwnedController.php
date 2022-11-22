@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class OwnedController extends Controller
 {
+
   public function index(Request $request)
   {
     if ($request->session()->get('user_session')) {
@@ -74,7 +75,9 @@ class OwnedController extends Controller
     $password =  $request->input("password");
     $plan_id =  $request->input("plan_id");
 
-
+    if (FuncController::passwordfilter($password) == "fail") {
+      return redirect("/owned")->with('statusbad', "The password is not correct");
+  }
     $ds = $this->remove($plan_id, $user_id, $password);
     if ($ds->res == "rash_1") {
       return redirect("/owned")->with('status', $ds->msg);

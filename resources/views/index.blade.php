@@ -9,7 +9,7 @@
     <!-- all.min.css -->
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
-    <link rel="stylesheet" href="{{ URL::asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('scss/main/main.css') }}">
     <!-- Font-Googel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,18 +112,6 @@
             <span style="--i:5;"></span>
             <span style="--i:23;"></span>
             <span style="--i:13;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:24;"></span>
-            <span style="--i:37;"></span>
-            <span style="--i:20;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:4;"></span>
-            <span style="--i:43;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:17;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:2;"></span>
-            <span style="--i:3;"></span>
             <span style="--i:60;"></span>
             <span style="--i:4;"></span>
             <span style="--i:7;"></span>
@@ -131,24 +119,9 @@
             <span style="--i:10;"></span>
             <span style="--i:24;"></span>
             <span style="--i:50;"></span>
-            <span style="--i:30;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:4;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:17;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:2;"></span>
-            <span style="--i:3;"></span>
-            <span style="--i:60;"></span>
-            <span style="--i:4;"></span>
-            <span style="--i:7;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:2;"></span>
-            <span style="--i:37;"></span>
             <span style="--i:87;"></span>
             <span style="--i:3;"></span>
             <span style="--i:27;"></span>
-
         </div>
     </div>
     <!--  -->
@@ -255,7 +228,7 @@
                             <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                         <div>
-                            <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
+                            <img src={{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                         <div>
                             <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
@@ -274,21 +247,21 @@
                     </div>
                     <div class="nameImges">
                         <h1>Title for content</h1>
-                        <img src="/Src/img/Icon_01.png" alt="">
+                        <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                     </div>
                     <div class="gridBox">
                         <h2>jsut text</h2>
                         <div>
-                            <img src="/Src/img/Icon_01.png" alt="">
+                            <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                         <div>
-                            <img src="/Src/img/Icon_01.png" alt="">
+                            <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                         <div>
-                            <img src="/Src/img/Icon_01.png" alt="">
+                            <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                         <div>
-                            <img src="/Src/img/Icon_01.png" alt="">
+                            <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -304,7 +277,7 @@
                 <div class="box">
                     <div class="text-titel">
                         <h1> Basic </h1>
-                        <img src="/Src/img/Icon_01.png" alt="">
+                        <img src="{{ URL::asset('img/Icon_01.png') }}" alt="">
                     </div>
                     <ul>
                         <div class="botten">
@@ -368,5 +341,7 @@
     <!-- End Foter -->
 
     <script src="{{ URL::asset('js/main.js') }}"></script>
+    <script src="{{ URL::asset('js/nav_bar.js') }}"></script>
+    <script src="{{ URL::asset('js/function.js') }}"></script>
 </body>
 </html>

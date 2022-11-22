@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Middleware\login;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Http\Request;
 Use App\Models\User;
@@ -26,7 +26,6 @@ class LoginController extends Controller
 
     public function loginpost($username_or_email, $password)
     {
-
         $login = FuncController::sentget("/users/login", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "username_or_email" => $username_or_email, "password" => $password]);
         return $login;
     }
@@ -37,7 +36,6 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             "loginusername" => "required",
             "loginpassword" => "required",
@@ -47,11 +45,15 @@ class LoginController extends Controller
         $username_or_email =  $request->input("loginusername");
         $password =   $request->input("loginpassword");
 
+        if (FuncController::passwordfilter($password) == "fail") {
+            return redirect("/login")->with('statusbad', "The password is not correct");
+        }
 
         $login = $this->loginpost($username_or_email, $password);
 
+
         if ($login->res == "rash_2") {
-            return redirect("/")->with('statusbad', $login->msg);
+            return redirect("/login")->with('statusbad', $login->msg);
         };
         
         if ($login->userData->is_ban == 1) {
@@ -68,15 +70,13 @@ class LoginController extends Controller
         ]);
 
         $request->session()->forget('products');
-
-
-
-        return redirect('/');
+        return redirect('/product');
     }
 
     public function storeforgetpassword(Request $request){
         $request->validate([
             "email" => "required",
+            'g-recaptcha-response' => 'recaptcha'
         ]);
 
 
@@ -86,11 +86,15 @@ class LoginController extends Controller
           return redirect("/forgetpassword")->with('statusbad',"The email is not vaild");
         }
 
+        $email =  FuncController::xssfilter($email);
+
+
        $forgetpass =  $this->forgetpassword($email);
+      
         if($forgetpass->res == "rash_2"){
          return redirect("/")->with('statusbad', $forgetpass->msg);
         }
-        return redirect("/")->with('status',$forgetpass->msg);
+        return redirect("/product")->with('status',$forgetpass->msg);
 
 
 

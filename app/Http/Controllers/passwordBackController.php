@@ -8,6 +8,7 @@ class passwordBackController extends Controller
 {
     public function index($path)
     {
+        $path =FuncController::linkfilter($path);
         $path = urlencode($path);
         return view("Resetpassword", compact("path"));
     }
@@ -21,28 +22,33 @@ class passwordBackController extends Controller
         $cancle = FuncController::sentget("/users/pass_not_me", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "path" => $path]);
         return $cancle;
     }
-    public function store(Request $request)
+    public function store(Request $request, $path)
     {
         $request->validate([
             "password" => "required",
             "rePassword" => "required",
-            "verify_code" => "required",
-            "path" => "required"
-        ]);
-
+            "verify_code" => "required"
+          ]);
         $password =  $request->input("password");
         $rePassword =   $request->input("rePassword");
         $verify_code =   $request->input("verify_code");
-        $pathpass =   $request->input("path");
+        $path = FuncController::linkfilter($path);
+        $path = urlencode($path);
+        if(gettype($verify_code) != "integer"){
+        return redirect("/user/auth/take/" . $path)->with('statusbad', "the verify code is not right");
+        }
+ 
+        if ($password != $rePassword) {
+            return redirect("/user/auth/take/" . $path)->with('statusbad', "the password do not match");
+        }
+        if (FuncController::passwordfilter($password) == "good") {
 
-        if (FuncController::passwordfilter($password) == "good" && FuncController::passwordfilter($rePassword) == "good") {
-
-            $pass = $this->passbak($password, $rePassword, $pathpass, $verify_code);
+            $pass = $this->passbak($password, $rePassword, $path, $verify_code);
 
             if ($pass->res == "rash_2") {
-                return redirect("/")->with('statusbad', $pass->msg);
+                return redirect("/user/auth/take/" . $path)->with('statusbad', $pass->msg);
             }
-            return redirect("/")->with('status', $pass->msg);
+            return redirect("/user/auth/take/" . $path)->with('status', $pass->msg);
         }
     }
     public function back($path)

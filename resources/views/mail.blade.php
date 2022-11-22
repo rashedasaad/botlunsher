@@ -6,4 +6,7 @@ body: {{ $info["body"] }}
 
 
 
+
+
+
 @endcomponent

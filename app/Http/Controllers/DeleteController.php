@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Http;
 
 class DeleteController extends Controller
 {
+
+
+    
     public function index(){
         return view("delete");
     }
@@ -33,9 +36,12 @@ class DeleteController extends Controller
 
        ]);
        $password =   $request->input("password");
-
+       if (FuncController::passwordfilter($password) == "fail") {
+        return redirect("/")->with('statusbad', "The password is not correct");
+    }
         $user_session = $request->session()->get("user_session");
       $id =  $user_session["user_id"];
+      
       $delete =  $this->delete($password,$id);
        if($delete->res == "rash_2"){
         return redirect("/")->with('statusbad', $delete->msg);
@@ -65,6 +71,6 @@ class DeleteController extends Controller
     {
        $request->session()->forget("user_session");
 
-       return redirect('/');
+       return redirect('/login');
     }
 }

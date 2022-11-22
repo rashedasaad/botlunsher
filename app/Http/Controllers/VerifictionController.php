@@ -32,7 +32,7 @@ class VerifictionController extends Controller
 
         if ($user->code == $code) {
 
-            $sa =  $this->registeruser($user->name, $user->password, $user->password, $user->email);
+            $sa =  $this->registeruser(FuncController::xssfilter($user->name), $user->password, $user->password,FuncController::xssfilter($user->email));
 
             if ($sa->res == "rash_2") {
                 return redirect("/")->with('statusbad', $sa->msg);

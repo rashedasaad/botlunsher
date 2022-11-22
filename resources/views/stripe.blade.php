@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="" method="post" id="payment-form">
+    <form action="{{ route("subscribe") }}" method="POST" id="payment-form">
         @csrf
         <input type="hidden" name="product_name" value="{{ $name }}">
         <input type="hidden" name="plan" value="{{ $plan }}">

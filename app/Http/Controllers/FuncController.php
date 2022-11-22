@@ -82,8 +82,19 @@ class FuncController extends Controller
     }
     
   }
+  public static  function xssfilter($str)
+  {
+    $danger = array("<", ">", "/", "src", "select", "*", "<script>", "%", "&");
+    $xss_filter = str_replace($danger, "", $str);
+    return  $xss_filter;
+  }
 
-
+  public static  function linkfilter($str)
+  {
+    $danger = array("<", ">", "/", "*", "<script>", "%", "&");
+    $xss_filter = str_replace($danger, "", $str);
+    return  $xss_filter;
+  }
 
   
 }

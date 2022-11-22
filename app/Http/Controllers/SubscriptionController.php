@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class SubscriptionController extends Controller
 {
 
+
     public function index(Request $request, $name,$plan)
     {
 
@@ -49,20 +50,23 @@ class SubscriptionController extends Controller
             "stripeToken" => "required"
         ]);
 
+
         $product_name =  $request->input("product_name");
         $plan =   $request->input("plan");
         $stripeToken =   $request->input("stripeToken");
 
     
-    $getip = file_get_contents("http://ip-api.com/json/" .FuncController::getUserIpAddr());
+    $getip = file_get_contents("http://ip-api.com/json/213.112.129.244" );//$request->ip();
           $getip =json_decode($getip);
+
      
+
 
         $cad  = $this->card($customer_id, $user_id, $product_name, $plan, $email,$stripeToken, $getip->countryCode,  $getip->city);
 
          if ($cad->res == "rash_1") {
             $request->session()->forget('products');
-            return redirect("/card");
+            return redirect("/product");
          }elseif($cad->res == "rash_2") {
             return $cad->msg;
          }

@@ -19,14 +19,22 @@ body {
     transform: translate(-50%, -50%);
     position: absolute;
     left: 50%;
-    top: 25%;
-    background: #1c1c1c;
+    top: max(20vw, 20em);
+    backdrop-filter: blur(15px);
+    background: #1c1c1c99;
     box-shadow: max(0vw, 0em) max(-2vw, -1em) max(2vw, 2em) max(-1vw, -1em);
     border-radius: max(0.4vw, 0.4em);
     padding: max(1vw, 1em) max(3vw, 3em) max(1vw, 1em);
-    width: 550px;
+    width: max(35vw, 35em);
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+
+    @media (max-width: 585px) {
+        & {
+            width: 95%;
+        }
+    }
 
     .continer {
 
@@ -35,6 +43,14 @@ body {
             h1 {
                 color: white;
                 padding: max(0vw, 0em) max(0vw, 0em) max(1vw, 1em) 0;
+                font-size: max(2vw, 2em);
+
+                @media (max-width: 404px) {
+                    & {
+                        font-size: max(1.5vw, 1.5em);
+                    }
+                }
+            
                 span {
                     color: #00ce79;
                 }
@@ -90,5 +106,147 @@ body {
                 }
             }
         }
+    }
+}
+
+
+.effect_container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+
+    .effect {
+        position: relative;
+        display: -webkit-box;
+        transform: rotate(45deg);
+
+        span {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: block;
+            background-color: #212121;
+            margin: 0 4px;
+            border-radius: max(50vw, 50em);
+            box-shadow: 0 0 59px -29px rgb(255 255 255 / 29%), inset 0 0 50px 12px rgb(0 0 0), inset 0 0 100px #ffffff87;
+            animation: animat 6s linear infinite;
+            -webkit-animation: animat 1s cubic-bezier(0, 0.55, 1, 0.16) infinite;
+            animation-duration: calc(400s / var(--i));
+
+            &:nth-child(even) {
+                border-radius: max(2vw, 2em);
+                -webkit-border-radius: max(2vw, 2em);
+                -moz-border-radius: max(2vw, 2em);
+                -ms-border-radius: max(2vw, 2em);
+                -o-border-radius: max(2vw, 2em);
+            }
+        }
+        .soft1 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 4px;
+            border-radius: max(50vw, 50em);
+            backdrop-filter: blur(8px);
+            background-color: #2121214d;
+            box-shadow: 0 0 0 10px rgb(0 0 0 / 4%), inset 0 0 43px -4px #01ef92, 0 0 100px #ffffff0a;
+            animation: animat 6s linear infinite;
+            -webkit-animation: animat 6s cubic-bezier(0, 0.55, 1, 0.16) infinite;
+            animation-duration: calc(400s / var(--i));
+
+            &:nth-child(even) {
+                border-radius: max(2vw, 2em);
+                -webkit-border-radius: max(2vw, 2em);
+                -moz-border-radius: max(2vw, 2em);
+                -ms-border-radius: max(2vw, 2em);
+                -o-border-radius: max(2vw, 2em);
+            }
+        }
+    }
+}
+
+@keyframes animat {
+    0% {
+        transform: rotate(5deg);
+        transform: translateY(200vh);
+    }
+
+    100% {
+        transform: rotate(100deg);
+        transform: translateY(-200vh);
+    }
+}
+
+
+.effect_container1 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+
+    .effect {
+        position: relative;
+        display: -webkit-box;
+        transform: rotate(45deg);
+
+        span {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: block;
+            background-color: #212121;
+            margin: 0 4px;
+            border-radius: max(50vw, 50em);
+            box-shadow: 0 0 59px -29px rgb(255 255 255 / 29%), inset 0 0 50px 12px rgb(0 0 0), inset 0 0 100px #ffffff87;
+            animation: animat 6s linear infinite;
+            -webkit-animation: animat 1s cubic-bezier(0, 0.55, 1, 0.16) infinite;
+            animation-duration: calc(900s / var(--i));
+
+            &:nth-child(even) {
+                border-radius: max(2vw, 2em);
+                -webkit-border-radius: max(2vw, 2em);
+                -moz-border-radius: max(2vw, 2em);
+                -ms-border-radius: max(2vw, 2em);
+                -o-border-radius: max(2vw, 2em);
+            }
+        }
+        .soft1 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 4px;
+            border-radius: max(50vw, 50em);
+            backdrop-filter: blur(8px);
+            background-color: #2121214d;
+            box-shadow: 0 0 0 10px rgb(0 0 0 / 4%), inset 0 0 43px -4px #01ef92, 0 0 100px #ffffff0a;
+            animation: animat 6s linear infinite;
+            -webkit-animation: animat 6s cubic-bezier(0, 0.55, 1, 0.16) infinite;
+            animation-duration: calc(400s / var(--i));
+
+            &:nth-child(even) {
+                border-radius: max(2vw, 2em);
+                -webkit-border-radius: max(2vw, 2em);
+                -moz-border-radius: max(2vw, 2em);
+                -ms-border-radius: max(2vw, 2em);
+                -o-border-radius: max(2vw, 2em);
+            }
+        }
+    }
+}
+
+@keyframes animat {
+    0% {
+        transform: rotate(5deg);
+        transform: translateY(200vh);
+    }
+
+    100% {
+        transform: rotate(100deg);
+        transform: translateY(-200vh);
     }
 }

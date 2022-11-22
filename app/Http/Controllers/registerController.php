@@ -45,8 +45,8 @@ class registerController extends Controller
             return redirect("/")->with('statusbad', "The password is not strong");
         }
         if (FuncController::username($username) == "fail") {
-            return redirect("/")->with('statusbad', "the are is big");
-        }
+        }     return redirect("/")->with('statusbad', "the are is big");
+       
         if (strlen($username) > 30) {
             return redirect("/")->with('statusbad', "the username is big");
         }
@@ -59,9 +59,10 @@ class registerController extends Controller
         if (strlen($password) < 8) {
             return redirect("/")->with('statusbad', "the password small it mast be biggar an 4");
         }
+ 
         if (FuncController::emailfilter($email) == "good") {
       
-            $usercheck =  $this->usercheck($username, $email, $password);
+            $usercheck =  $this->usercheck(FuncController::xssfilter($username), FuncController::xssfilter($email), $password);
  
             if ($usercheck->res == "rash_1") {
                 $request->session()->put("verfiy", [
@@ -87,7 +88,7 @@ class registerController extends Controller
                 );
 
                 $data = [
-                    "subject" => "botluncher",
+                    "subject" => env("APP_NAME"),
                     "code_link" => "http://localhost:8000/user/verifiy/".$ver,
                     "body" => $code
                 ];
@@ -102,15 +103,5 @@ class registerController extends Controller
             }
         }
         return redirect("/")->with('statusbad', "the username is small");
-
-
-        /*
-        $sa =  $this->registeruser($username, $password, $repassword, $email);
-
-        if ($sa->res == "rash_2") {
-            return redirect("/")->with('statusbad', $sa->msg);
-        }
-        return redirect("/")->with('status', $sa->msg);
-        */
     }
 }

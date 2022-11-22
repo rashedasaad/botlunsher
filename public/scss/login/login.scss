@@ -12,6 +12,7 @@
 body {
     background-color: #2C2C2C;
     overflow: hidden;
+
 }
 
 .login {
@@ -130,6 +131,7 @@ body {
                     width: 100%;
                     transition: 0.3s;
                     color: #fff;
+                    user-select: none;
                 }
 
                 i {
@@ -138,6 +140,14 @@ body {
                     color: rgb(0, 206, 121);
                     font-size: max(1vw, 1em);
                     z-index: 0;
+
+                    @media (max-width: 1194px) {
+                        margin-left: max(-2.6vw, -2.6em);
+
+                        @media (max-width: 930px) {
+                            margin-left: -25px;
+                        }
+                    }
                 }
 
                 input::placeholder {
@@ -145,6 +155,7 @@ body {
                     color: white;
                     font-size: max(1vw, 1em);
                     transition: 0.3s;
+                    user-select: none;
                 }
 
                 input:focus {
@@ -182,10 +193,14 @@ body {
                 gap: max(2vw, 2em);
                 align-items: center;
                 flex-wrap: nowrap;
-                justify-content: flex-end;
-
+                justify-content: space-between;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
                 input {
                     background-color: #00ce79;
+                    user-select: none;
                 }
             }
 
@@ -227,107 +242,256 @@ body {
 
         }
 
-        .createAccount {
-            position: absolute;
-            top: 0;
-            left: 100%;
-            background-color: #1c1c1c;
-            box-shadow: inset 0 0 10px -4px #00ce79;
-            padding: max(1vw, 1em);
-            border-radius: max(10.4vw, 0.4em) max(0.4vw, 0.4em) max(0.4vw, 0.4em) max(10.4vw, 0.4em);
-            justify-self: center;
-            margin: 0 auto;
-            width: 100%;
-            height: 100%;
+    }
 
-            .creAcc {
-                color: white;
-                font-size: max(2vw, 2em);
-                padding: max(0vw, 0em) max(0vw, 0em) max(2vw, 2em);
+    .createAccount {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background-color: #1c1c1c;
+        box-shadow: inset 0 0 10px -4px #00ce79;
+        padding: max(1vw, 1em);
+        border-radius: max(10.4vw, 0.4em) max(0.4vw, 0.4em) max(0.4vw, 0.4em) max(10.4vw, 0.4em);
+        justify-self: center;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-                @media (max-width: 1282px) {
-                    & {
-                        font-size: max(1.7vw, 1.7em);
-                    }
+        .creAcc {
+            color: white;
+            font-size: max(2vw, 2em);
+            padding: max(0vw, 0em) max(0vw, 0em) max(0.5vw, 0.5em);
+            text-align: center;
 
-                    @media (max-width: 1130px) {
-                        & {
-                            font-size: max(1.4vw, 1.4em);
-                        }
-                    }
+            @media (max-width: 1282px) {
+                & {
+                    font-size: max(1.7vw, 1.7em);
                 }
 
-                span {
-                    color: #00ce79;
-                    font-weight: bold;
+                @media (max-width: 1130px) {
+                    & {
+                        font-size: max(1.4vw, 1.4em);
+                    }
                 }
             }
 
-            .create {
-                .allform {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
+            span {
+                color: #00ce79;
+                font-weight: bold;
+            }
+        }
 
-                    input {
-                        border: 1px solid transparent;
-                        margin: max(1vw, 1em) max(0vw, 0em);
-                        background-color: #cbcbcb00;
+        .create {
+            .allform {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+
+                input {
+                    border: 1px solid transparent;
+                    margin: max(1vw, 1em) max(0vw, 0em);
+                    background-color: rgba(203, 203, 203, 0);
+                    border-radius: 0px;
+                    padding: max(0.9vw, 0.9em) max(0vw, 0em);
+                    border-bottom: max(0.1vw, 0.1em) solid #00ce79;
+                    display: block;
+                    width: 90%;
+                    transition: 0.3s;
+                    color: #fff;
+                    user-select: none;
+}
+
+                input::placeholder {
+                    font-weight: 500;
+                    color: white;
+                    font-size: max(1vw, 1em);
+                    transition: 0.3s;
+                    user-select: none;
+                }
+
+                input:focus {
+                    outline: 0;
+                    padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+                }
+
+                input:focus::placeholder {
+                    color: transparent;
+                }
+
+                .inputBox {
+                    position: relative;
+                    width: 91%;
+                    padding: 5px;
+
+                    #Mathe_1 {
+                        background-color: rgba(203, 203, 203, 0);
                         border-radius: 0px;
                         padding: max(0.9vw, 0.9em) max(0vw, 0em);
                         border-bottom: max(0.1vw, 0.1em) solid #00ce79;
                         display: block;
-                        width: 40%;
-                        transition: 0.3s;
+                        width: 100%;
                         color: #fff;
+                        margin: 0 auto;
+                        user-select: none;
+
+                        &::placeholder {
+                            font-weight: 500;
+                            color: white;
+                            font-size: max(1vw, 1em);
+                            transition: 0.3s;
+                            user-select: none;
+                        }
+
+                        &:focus {
+                            outline: 0;
+                            padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+                        }
+
+                        &:focus::placeholder {
+                            color: transparent;
+                        }
                     }
 
-                    input::placeholder {
-                        font-weight: 500;
-                        color: white;
-                        font-size: max(1vw, 1em);
-                        transition: 0.3s;
-                    }
-
-                    input:focus {
-                        outline: 0;
-                        border: 1px solid #ffffff;
-                        padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
-                    }
-
-                    input:focus::placeholder {
-                        color: transparent;
-                    }
-                }
-
-                .loginAcc {
-                    text-align: left;
-                    padding: max(1vw, 1em) max(0vw, 0em) max(0.6vw, 0em);
-
-                    p {
-                        width: fit-content;
+                    #toggl {
+                        position: absolute;
+                        top: 8px;
+                        right: 5px;
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
                         color: #00ce79;
-                        font-size: max(1vw, 1em);
                         cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &::before {
+                            content: "\f070";
+                            font-family: fontAwesome;
+                            font-size: max(1.3vw, 1.3em);
+
+                        }
+
+                        &.hide::before {
+                            content: "\f06e";
+
+                        }
                     }
                 }
+            }
 
-                .button {
-                    text-align: end;
-                    width: 100%;
+            .validation {
+                // margin: 0 auto 0 max(2vw,2em);
+                width: 100%;
 
-                    input {
-                        padding: max(1vw, 1em) max(1vw, 1em);
-                        border-radius: max(0.4vw, 0.4em);
-                        background-color: #00ce79;
-                        font-size: max(1vw, 1em);
-                        font-weight: bold;
+                ul {
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 8px;
+                    justify-content: center;
+                    padding: 0 0 0 max(2vw, 2em);
 
-                        @media(max-width: 1698px) {
-                            & {
-                                padding: max(0.8vw, 0.8em) max(0.9vw, 0.9em);
+                    .left {
+                        width: 100%;
+
+                        li {
+                            position: relative;
+                            list-style: none;
+                            color: white;
+                            transition: .5s;
+                            font-size: max(1vw, 1em);
+                            transition: ease .5s;
+                            user-select: none;
+
+                            &.valid {
+                                color: rgbe(255, 255, 255, 0.5);
+                                transition: ease .5s;
+
+                                &::before {
+                                    content: "\f058";
+                                    color: #00ce79;
+                                }
                             }
+
+                            &::before {
+                                content: "\f192";
+                                width: 20px;
+                                height: 20px;
+                                padding-right: max(0.1vw, 0.1em);
+                                padding-bottom: max(0.1vw, 0.1em);
+                                font-family: fontAwesome;
+                                display: inline-flex;
+                            }
+                        }
+                    }
+
+                    .right {
+                        width: 100%;
+
+                        li {
+                            position: relative;
+                            list-style: none;
+                            color: white;
+                            transition: .5s;
+                            font-size: max(1vw, 1em);
+                            user-select: none;
+
+                            &.valid {
+                                color: rgbe(255, 255, 255, 0.5);
+
+                                &::before {
+                                    content: "\f058";
+                                    color: #00ce79;
+                                }
+                            }
+
+                            &::before {
+                                content: "\f192";
+                                width: 20px;
+                                height: 20px;
+                                padding-right: max(0.1vw, 0.1em);
+                                padding-bottom: max(0.1vw, 0.1em);
+                                font-family: fontAwesome;
+                                display: inline-flex;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .loginAcc {
+                text-align: left;
+                margin: max(1vw, 1em) auto 0 max(2vw, 2em);
+
+                p {
+                    width: fit-content;
+                    color: #00ce79;
+                    font-size: max(1vw, 1em);
+                    cursor: pointer;
+                    user-select: none;
+                }
+            }
+
+            .button {
+                text-align: end;
+                width: 100%;
+
+                input {
+                    padding: max(1vw, 1em) max(1vw, 1em);
+                    border-radius: max(0.4vw, 0.4em);
+                    background-color: #00ce79;
+                    font-size: max(1vw, 1em);
+                    font-weight: bold;
+
+                    @media(max-width: 1698px) {
+                        & {
+                            padding: max(0.8vw, 0.8em) max(0.9vw, 0.9em);
                         }
                     }
                 }
