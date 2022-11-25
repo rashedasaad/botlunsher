@@ -51,8 +51,7 @@
                                     <input  value="<?php print_r($shows[0]["year"])?>" class="selectopt pric" name="interval" type="radio" id="2" >
                                     <label for="2" class="option"> <?php echo "year"?> </label>
       
-                           
-                                    <input type="hidden" name="productname" value="<?php print_r($shows[0]["product_name"]); ?>">
+                                    <input type="hidden" name="productname" value="<?php print_r($shows[0]["product_id"]); ?>">
                             </div>
                         </div>
                     </div>

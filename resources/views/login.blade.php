@@ -24,7 +24,10 @@
 </head>
 
 <body>
-    <input class="error" type="hidden" value="">
+    @if ( session('statusbad'))
+    <input class="error" type="hidden" value="{{ session('statusbad') }}">    
+    @endif
+    
 
     <div class="appearance"></div>
 
@@ -51,7 +54,7 @@
 
                     <div class="For">
                         <p id="create" href="#">Create Account</p>
-                        <a href="#">Forget Password?</a>
+                        <a href="/forgetpassword">Forget Password?</a>
                     </div>
                     <div class="button">
                         <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
@@ -63,17 +66,20 @@
         </div>
         <section class="createAccount">
             <p class="creAcc">createAccount <span>with your account</span></p>
+
             <div class="create">
+                <form class="main-form" action="http://127.0.0.1:8000/store/register" method="POST">
+                    @csrf
                 <div class="allform">
-                    <input placeholder="username" type="text">
-                    <input placeholder="email addres" type="email">
+                    <input placeholder="username" name="regusername" type="text">
+                    <input placeholder="your email" name="regemail" type="email">
 
                     <div class="inputBox">
-                        <input placeholder="password" type="password" id="Mathe_1" onkeyup="checkPassword(this.value)">
+                        <input placeholder="password" name="regpassword" type="password" id="Mathe_1" onkeyup="checkPassword(this.value)">
                         <span id="toggl"></span>
                     </div>
 
-                    <input placeholder=" confirm password" type="password" id="Mathe_2"
+                    <input placeholder="confirm password" name="regrepassword" id="con_password" type="password" id="Mathe_2"
                         onkeyup="MathePassword(this.value)">
                 </div>
                 <div class="validation">
@@ -91,11 +97,13 @@
                     </ul>
                 </div>
                 <div class="loginAcc">
-                    <p id="log" href="#">login Account</p>
+                    <p id="log">login Account</p>
                 </div>
                 <div class="button">
-                    <input type="submit" href="#">
+                    <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                    <input type="submit">
                 </div>
+             </form>
             </div>
         </section>
     </div>
@@ -107,7 +115,7 @@
 
         // Popap
         let error = document.querySelector(".error")
-        let Sswal = document.getElementById("Swal")
+
         if (error.value != "") {
             Swal.fire({
                 position: 'top-end',

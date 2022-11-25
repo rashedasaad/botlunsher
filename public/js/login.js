@@ -66,11 +66,14 @@ function MathePassword() {
 
 // Login with your account
 const togglePassword = document.querySelector("#togglePassword");
+const con_password = document.querySelector("#con_password");
 const password = document.querySelector("#passwordActiv");
 togglePassword.addEventListener("click", function () {
     // toggle the type attribute
     const type = password.getAttribute("type") === "password" ? "text" : "password";
+    const type1 = con_password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
+    con_password.setAttribute("type", type1);
     // toggle the icon
     let hehe = true;
     if (hehe) {

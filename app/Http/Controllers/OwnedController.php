@@ -63,26 +63,30 @@ class OwnedController extends Controller
     $register = FuncController::sentget("/sup/remove", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "plan_id" => $plan_id, "user_id" => $user_id, "password" => $password]);
     return $register;
   }
-  public function store(Request $request)
+
+
+  public function store(Request $request,$plan_id)
   {
     $user = $request->session()->get('user_session');
     $user_id = $user["user_id"];
 
     $request->validate([
       "password" => "required",
-      "plan_id" => "required"
+      'g-recaptcha-response' => 'recaptcha'
     ]);
     $password =  $request->input("password");
-    $plan_id =  $request->input("plan_id");
+
+
+
 
     if (FuncController::passwordfilter($password) == "fail") {
-      return redirect("/owned")->with('statusbad', "The password is not correct");
+      return redirect("/owned")->with('statusbad', "The password is not invaild");
   }
-    $ds = $this->remove($plan_id, $user_id, $password);
-    if ($ds->res == "rash_1") {
-      return redirect("/owned")->with('status', $ds->msg);
-    } elseif ($ds->res == "rash_2") {
-      return redirect("/owned")->with('statusbad', $ds->msg);
+    $remove = $this->remove($plan_id, $user_id, $password);
+    if ($remove->res == "rash_1") {
+      return redirect("/owned")->with('status', $remove->msg);
+    } elseif ($remove->res == "rash_2") {
+      return redirect("/owned")->with('statusbad', $remove->msg);
     }
   }
 }

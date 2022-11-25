@@ -15,6 +15,7 @@ class AllProcductController extends Controller
 
   public function showpproduct(Request $request)
   {
+    
     if ($request->session()->get('user_session')) {
       $user = $request->session()->get('user_session');
       $customer_id = $user["customer_id"];
@@ -57,11 +58,11 @@ class AllProcductController extends Controller
       for ($m = 0; $m < count($month); $m++) {
         if ($year[$i]->product_name == $month[$m]->product_name) {
           if ($year[$i]->owned == true) {
-            array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
+            array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
           } elseif ($month[$i]->owned == true) {
-            array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
+            array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
           } else {
-            array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
+            array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img,"vid" => $month[$m]->vid]);
           }
         }
       }
@@ -98,11 +99,11 @@ class AllProcductController extends Controller
       for ($m = 0; $m < count($month); $m++) {
         if ($year[$i]->product_name == $month[$m]->product_name) {
           if ($year[$i]->owned == true) {
-            array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img]);
+            array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img]);
           } elseif ($month[$i]->owned == true) {
-            array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img]);
+            array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price,"img" => $month[$m]->img]);
           } else {
-            array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name, "details" => $month[$m]->details, "price" => [$year[$i]->price,  $month[$m]->price],"img" => $month[$m]->img,  "year" => $year[$i]->plan_id,  "month" => $month[$m]->plan_id]);
+            array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "price" => [$year[$i]->price,  $month[$m]->price],"img" => $month[$m]->img,  "year" => $year[$i]->plan_id,  "month" => $month[$m]->plan_id]);
           }
         }
       }
@@ -112,7 +113,7 @@ class AllProcductController extends Controller
     
 
     for ($s=0; $s < count($storges); $s++) { 
-      if ($storges[$s]["product_name"] == $product) {
+      if ($storges[$s]["product_id"] == $product) {
         if($storges[$s]["owend"] == 0){
           array_push($shows, $storges[$s]);
         }else{

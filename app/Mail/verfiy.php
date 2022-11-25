@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 
 class verfiy extends Mailable
@@ -22,6 +23,7 @@ class verfiy extends Mailable
      *
      * @return $this
      */
+
     public function build()
     {
         return $this->from("vamokan641@haboty.com","botlunsher")->subject($this->information["subject"])->markdown("mail")->with("info",$this->information);

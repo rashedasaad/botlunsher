@@ -18,17 +18,20 @@ class VerifictionController extends Controller
         return $register;
     }
 
-    public function store(Request $request)
+    public function store(Request $request,$codelink)
     {
         $request->validate([
             "code" => "required",
-            "code_link" => "required",
 
         ]);
-        $code =  $request->input("code");
-        $code_link =   $request->input("code_link");
 
-        $user = User::where('code_link', $code_link)->first();
+        $code =  $request->input("code");
+
+         urldecode($codelink);
+    
+         FuncController::linkfilter($codelink);
+
+        $user = User::where('code_link', $codelink)->first();
 
         if ($user->code == $code) {
 
@@ -37,9 +40,9 @@ class VerifictionController extends Controller
             if ($sa->res == "rash_2") {
                 return redirect("/")->with('statusbad', $sa->msg);
             }
-            return redirect("/")->with('status', $sa->msg);
+            return redirect("/login")->with('status', $sa->msg);
         } else {
-            return "not vaild";
+            return redirect("/login")->with('statusbad', "The verifiy code is not vaild");
         };
     }
 }

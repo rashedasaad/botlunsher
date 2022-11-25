@@ -43,7 +43,7 @@ ul {
 }
 .asid .asid_bag .selct_box .toggle-settings {
   position: absolute;
-  right: max(-3.7vw, -3.7em);
+  right: max(-3.3vw, -3.3em);
   border-radius: max(0vw, 0em) max(1vw, 1em) max(1vw, 1em) max(0vw, 0em);
   top: max(0.5vw, 0.5em);
   color: white;
@@ -110,8 +110,15 @@ ul {
   text-align: left;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 91vh;
 }
-.asid .asid_bag .selct_box .leftt .link a.activ {
+.asid .asid_bag .selct_box .leftt .link .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.asid .asid_bag .selct_box .leftt .link .top a.activ {
   position: relative;
   color: #ffffff;
   background-color: #222222;
@@ -119,14 +126,15 @@ ul {
   z-index: 100;
   overflow: hidden;
   font-size: max(1.3vw, 1.3em);
-  margin-bottom: max(0.1vw, 0.1em);
+  margin-bottom: max(0.7vw, 0.7em);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  cursor: auto;
   z-index: 1;
 }
-.asid .asid_bag .selct_box .leftt .link a {
+.asid .asid_bag .selct_box .leftt .link .top a {
   position: relative;
   color: #ffffff;
   padding: max(1vw, 1em);
@@ -136,7 +144,7 @@ ul {
   margin-bottom: 20px;
   z-index: 1;
 }
-.asid .asid_bag .selct_box .leftt .link a::after {
+.asid .asid_bag .selct_box .leftt .link .top a::after {
   position: absolute;
   content: "";
   left: 0;
@@ -147,11 +155,183 @@ ul {
   z-index: -10;
   transition: ease 0.9s;
 }
-.asid .asid_bag .selct_box .leftt .link a:hover::after {
+.asid .asid_bag .selct_box .leftt .link .top a:hover::after {
   width: 100%;
-  color: black;
+  color: rgb(255, 255, 255);
   z-index: -10;
   border-radius: max(0vw, 0em);
+}
+.asid .asid_bag .selct_box .leftt .link .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .redDelet {
+  position: relative;
+  color: #fb0000;
+  padding: max(1vw, 1em);
+  z-index: 100;
+  overflow: hidden;
+  font-size: max(1.3vw, 1.3em);
+  margin-bottom: 20px;
+  z-index: 1;
+  transition: ease 0.9s;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .redDelet::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: max(0.2vw, 0.2em);
+  height: max(5vw, 5em);
+  background-color: #a30000;
+  z-index: -10;
+  transition: ease 0.9s;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .redDelet:hover::after {
+  width: 100%;
+  z-index: -10;
+  border-radius: max(0vw, 0em);
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .redDelet:hover {
+  color: #ffffff;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new {
+  display: none;
+  transition: 0.3s;
+  opacity: 0;
+  position: relative;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new span {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.678);
+  z-index: 1;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(28, 28, 28);
+  padding: 18px;
+  border-radius: 4px;
+  width: 500px;
+  animation: dwonUp 1s backwards;
+  -webkit-animation: dwonUp 1s backwards;
+  z-index: 2;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .Icon_d {
+  position: absolute;
+  top: -25px;
+  right: -18px;
+  font-size: max(3vw, 3em);
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .Icon_d i {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  color: white;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 h1 {
+  text-align: center;
+  font-size: max(1.3vw, 1.3em);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding-bottom: max(1vw, 1em);
+  color: white;
+  user-select: none;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input {
+  position: relative;
+  border: 1px solid transparent;
+  margin: max(1vw, 1em) max(0vw, 0em);
+  background-color: rgba(203, 203, 203, 0);
+  border-radius: 0px;
+  padding: max(0.9vw, 0.9em) max(0vw, 0em);
+  border-bottom: max(0.1vw, 0.1em) solid #fff;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  color: #fff;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input::-moz-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input:-ms-input-placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input::placeholder {
+  font-weight: 500;
+  color: #777;
+  font-size: max(1vw, 1em);
+  transition: 0.3s;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input:focus {
+  outline: 1;
+  padding: max(0.9vw, 0.9em) max(0.9vw, 0.9em);
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input:focus::-moz-placeholder {
+  color: transparent;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 input:focus::placeholder {
+  color: transparent;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon {
+  text-align: right;
+  margin: max(2vw, 2em) 0 0;
+}
+.asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon .sub {
+  color: white;
+  padding: max(0.5vw, 0.5em) max(1vw, 1em);
+  margin: max(0vw, 0em) max(0vw, 0em) max(0vw, 0em) auto;
+  background-color: #a30000;
+  border-radius: max(0.2vw, 0.2em);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: max(1.5vw, 1.5em);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+@-webkit-keyframes dwonUp {
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+  from {
+    top: 0%;
+    opacity: 0;
+  }
+}
+@keyframes dwonUp {
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+  from {
+    top: 0%;
+    opacity: 0;
+  }
 }
 .asid .asid_bag .selct_box.clos {
   position: relative;

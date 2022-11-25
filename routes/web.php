@@ -41,7 +41,7 @@ Route::middleware(["login"])->group(function () {
     Route::get("/user/auth/back/{path}", [passwordBackController::class, 'back'])->name("back");
     Route::post("/store/passback/{path}", [passwordBackController::class, 'store'])->name("passback");
     Route::get("/user/verifiy/{code_link}", [VerifictionController::class, 'index']);
-    Route::post("/store/verifiy", [VerifictionController::class, 'store'])->name("verifiy");
+    Route::post("/store/verifiy/{codelink}", [VerifictionController::class, 'store'])->name("verifiy");
 });
 
 Route::middleware(["is_login"])->group(function () {
@@ -58,5 +58,5 @@ Route::middleware(["is_login"])->group(function () {
     Route::post("/store/check", [DeleteController::class, 'isban'])->name("isban");
     Route::get("/owned", [OwnedController::class, 'index']);
     Route::get("/cancel/{plan_id}", [OwnedController::class, 'cancle']);
-    Route::post("/cancel/sub", [OwnedController::class, 'store'])->name("cancel");
+    Route::post("/cancel/sub/{plan_id}", [OwnedController::class, 'store'])->name("cancel");
 });

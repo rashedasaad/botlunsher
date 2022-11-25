@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
     <link rel="stylesheet" href="{{ URL::asset('scss/Account/Account.css') }}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
     <!-- Font-Googel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,23 +23,54 @@
         <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
+    @if (session('statusbad'))
+    <input class="error" type="hidden" value="{{ session('statusbad') }}">    
+    @elseif (session('status'))
+    <input class="error" type="hidden" value="{{ session('status') }}">    
+    @endif
+    
     <!-- Start menu -->
     <form action="{{route("update")}}" method="POST"></form>
     @csrf
     <div class="asid">
         <div class="asid_bag">
-            <div class="selct_box">
+        <div class="selct_box">
                 <div class="toggle-settings">
                     <i class="settin fas fa-cog fa-spin"></i>
                 </div>
+
                 <div class="leftt">
                     <div class="product">
                         <h1>naum</h1>
                     </div>
                     <div class="link">
-                        <a class="activ" href="#">Account</a>
-                        <a href="/owned">My Bots</a>
+                        <div class="top">
+                            <a class="activ" href="#">Account</a>
+                            <a href="/owned">My Bots</a>
+                        </div>
+
+                        <div class="bottom">
+                            <a id="deletAccoun" class="redDelet" href="#">Delete Account</a>
+                            <div class="delet_new">
+                                <span></span>
+                                <div class="contenar11">
+                                    <div class="Icon_d">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <h1>Are you sure that you want to delete your account ?</h1>
+                                    <form action="{{ route('delete') }}" method="POST">
+                                        @csrf
+                                        <input placeholder="password" type="password" name="password">
+                                        <div class="butoon">
+                                            <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                                            <input class="sub" type="submit" value="Delete">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="com">
@@ -106,6 +140,23 @@
 
 
     <script>
+        // ==============================================
+        let deletAccoun = document.getElementById("deletAccoun");
+        let delet_new = document.querySelector(".delet_new");
+        let Icon_i = document.querySelector(".Icon_d i");
+        deletAccoun.onclick = () => {
+            delet_new.style = "opacity: 1;transition: all 0.6s ease 0s;display: block;"
+
+            if (delet_new !== "block") {
+                Icon_i.onclick = () => {
+                    delet_new.style.display = "none";
+                };
+            };
+        };
+        // ==============================================
+
+
+
         let Icon = document.querySelector(".toggle-settings .settin")
         let opens = document.querySelector(".selct_box")
         let leftt = document.querySelector(".leftt")

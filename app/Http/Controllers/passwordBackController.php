@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class passwordBackController extends Controller
 {
-    public function index($path)
+    public function index()
     {
-        $path =FuncController::linkfilter($path);
-        $path = urlencode($path);
+
+
         return view("Resetpassword", compact("path"));
     }
     public function passbak($password, $rePassword, $path, $verify_code)

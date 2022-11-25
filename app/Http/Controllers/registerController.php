@@ -21,11 +21,6 @@ class registerController extends Controller
 
     public function store(Request $request)
     {
-        $username =  $request->input("regusername");
-        $email =   $request->input("regemail");
-        $password =   $request->input("regpassword");
-        $repassword =   $request->input("regrepassword");
-
 
         $request->validate([
             "regusername" => "required",
@@ -35,36 +30,50 @@ class registerController extends Controller
             'g-recaptcha-response' => 'recaptcha'
         ]);
 
-
-
+        $username =  $request->input("regusername");
+        $email =   $request->input("regemail");
+        $password =   $request->input("regpassword");
+        $repassword =   $request->input("regrepassword");
 
         if ($password != $repassword) {
-            return redirect("/")->with('statusbad', "the password is not the same");
+            return redirect("/login")->with('statusbad', "The password is not the matching");
         }
-        if (FuncController::passwordfilter($password) == "fail" && FuncController::passwordfilter($repassword) == "fail") {
-            return redirect("/")->with('statusbad', "The password is not strong");
+        if (FuncController::passwordfilter($password) == "fail") {
+           
+            return redirect("/login")->with('statusbad', "The password is not strong");
         }
         if (FuncController::username($username) == "fail") {
-        }     return redirect("/")->with('statusbad', "the are is big");
+
+  
+            return redirect("/login")->with('statusbad', "This is invalid username");
+        }    
        
         if (strlen($username) > 30) {
-            return redirect("/")->with('statusbad', "the username is big");
+            
+  
+            return redirect("/login")->with('statusbad', "Please Write fewer letters");
         }
         if (strlen($username) < 4) {
-            return redirect("/")->with('statusbad', "the username is small");
+            
+       
+            return redirect("/login")->with('statusbad', "Please Write more leter");
         }
         if (strlen($password) > 30) {
-            return redirect("/")->with('statusbad', "the password is big");
+            
+      
+            return redirect("/login")->with('statusbad', "the password is big");
         }
         if (strlen($password) < 8) {
-            return redirect("/")->with('statusbad', "the password small it mast be biggar an 4");
+          
+            return redirect("/login")->with('statusbad', "the password small it mast be biggar an 4");
         }
  
         if (FuncController::emailfilter($email) == "good") {
-      
+            
             $usercheck =  $this->usercheck(FuncController::xssfilter($username), FuncController::xssfilter($email), $password);
  
             if ($usercheck->res == "rash_1") {
+
                 $request->session()->put("verfiy", [
                     "code_link" => FuncController::generateToken(125),
                     "code" =>  FuncController::generatenumber(6)
@@ -74,19 +83,7 @@ class registerController extends Controller
                 $ver = $verfiy["code_link"];
                 $code = $verfiy["code"];
 
-                $SS = User::updateOrCreate(
-                    [
-                        'email' => $email,
-                    ],
-                    [
-
-                        'name' => $username,
-                        "password" =>  $password,
-                        "code_link" => $ver,
-                        "code" => $code
-                    ]
-                );
-
+   
                 $data = [
                     "subject" => env("APP_NAME"),
                     "code_link" => "http://localhost:8000/user/verifiy/".$ver,
@@ -96,12 +93,27 @@ class registerController extends Controller
 
                 try {
                     Mail::to($email)->send(new verfiy($data));
+                    $SS = User::updateOrCreate(
+                        [
+                            'email' => $email,
+                        ],
+                        [
+    
+                            'name' => $username,
+                            "password" =>  $password,
+                            "code_link" => $ver,
+                            "code" => $code
+                        ]
+                    );
+                    return redirect("/login")->with('status', "check you mailbox");
+    
                 } catch (\Throwable $th) {
                     return response()->json(["sorry there was a problem and we cannat complit the prossece"]);
                 }
                 
             }
         }
-        return redirect("/")->with('statusbad', "the username is small");
+  
+        return redirect("/login")->with('statusbad', "There are problem with register ");
     }
 }

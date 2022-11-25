@@ -32,8 +32,8 @@ class DeleteController extends Controller
 
 
      $request->validate([
-        "password" => "required"
-
+        "password" => "required",
+        'g-recaptcha-response' => 'recaptcha'
        ]);
        $password =   $request->input("password");
        if (FuncController::passwordfilter($password) == "fail") {

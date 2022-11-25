@@ -16,8 +16,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;1,500&family=Open+Sans:ital,wght@0,600;1,500;1,600&display=swap"
         rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+
+    @if (session('statusbad'))
+
+    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
+    <p style="display: none"  class="boolean">{{ session('bool') }}</p>
+
+    @elseif (session('status'))  
+    <p style="display: none"  class="error">{{ session('status') }}</p>
+    <p style="display: none" class="boolean">{{ session('bool') }}</p>
+    @endif
 
 
     <!-- Start menu -->
@@ -56,7 +67,7 @@
                         <div style="display: none;" class="data_father">
                             <p class="data_price_monthly"><?php echo $storges[$p]["month_price"] ?></p>
                             <p class="data_price_yearly"><?php echo $storges[$p]["year_price"] ?></p>
-                            <p class="data_key">/show/<?php echo $storges[$p]["product_name"] ?></p>
+                            <p class="data_key">/show/<?php echo $storges[$p]["product_id"] ?></p>
                             <p class="data_isOwned"><?php echo $storges[$p]["owend"] ?></p>
                             <p class="data_vid"><?php echo $storges[$p]["vid"] ?></p>
                         </div>
@@ -80,7 +91,7 @@
                             <div style="display: none;" class="data_father">
                                 <p class="data_price_monthly"><?php echo $storges[$i]["month_price"] ?></p>
                                 <p class="data_price_yearly"><?php echo $storges[$i]["year_price"] ?></p>
-                                <p class="data_key">/show/<?php echo $storges[$i]["product_name"] ?></p>
+                                <p class="data_key">/show/<?php echo $storges[$i]["product_id"] ?></p>
                                 <p class="data_isOwned"><?php echo $storges[$i]["owend"] ?></p>
                                 <p class="data_vid"><?php echo $storges[$i]["vid"] ?></p>
                             </div>
@@ -180,6 +191,33 @@
                 }
             };
         });
+
+
+        let error = document.querySelector(".error")
+        let bool = document.querySelector(".boolean")
+console.log(bool.textContent);
+
+
+if (error.value != "") {
+    if(bool.textContent == 1){
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: error.textContent,
+        showConfirmButton: false,
+        timer: 3000
+    })
+    }else if(bool.textContent == 0){
+        Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: error.textContent,
+        showConfirmButton: false,
+        timer: 5000
+    })
+    }
+
+}
     </script>
 </body>
 </html>

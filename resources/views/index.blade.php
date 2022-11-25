@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
     <link rel="stylesheet" href="{{ URL::asset('scss/main/main.css') }}">
+
     <!-- Font-Googel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,37 +21,37 @@
 <body>
     <!-- Start nav bullets -->
     <div class="nav-bullets">
-        <div class="bullet" data-section=".Home">
+        <div id="Home_none" class="bullet" data-section=".Home">
             <span></span>
             <div class="tooltip active">Home
                 <h6></h6>
             </div>
         </div>
-        <div class="bullet" data-section=".Aboute">
+        <div id="Aboute_none" class="bullet" data-section=".Aboute">
             <span></span>
             <div class="tooltip">Aboute
                 <h6></h6>
             </div>
         </div>
-        <div class="bullet" data-section=".discord">
+        <div id="discord_none" class="bullet" data-section=".discord">
             <span></span>
             <div class="tooltip">discord
                 <h6></h6>
             </div>
         </div>
-        <div class="bullet" data-section=".strore">
+        <div id="strore_none" class="bullet" data-section=".strore">
             <span></span>
             <div class="tooltip">strore
                 <h6></h6>
             </div>
         </div>
-        <div class="bullet" data-section=".Pricing">
+        <div id="Pricing_none" class="bullet" data-section=".Pricing">
             <span></span>
             <div class="tooltip">Pricing
                 <h6></h6>
             </div>
         </div>
-        <div class="bullet" data-section=".footer">
+        <div id="footer_none" class="bullet" data-section=".footer">
             <span></span>
             <div class="tooltip">footer
                 <h6></h6>

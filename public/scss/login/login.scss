@@ -479,8 +479,17 @@ body {
             }
 
             .button {
-                text-align: end;
+                display: flex;
                 width: 100%;
+                padding: max(1vw, 1em) max(2vw, 2em);
+                gap: max(2vw, 2em);
+                align-items: center;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
 
                 input {
                     padding: max(1vw, 1em) max(1vw, 1em);
