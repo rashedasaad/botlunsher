@@ -48,6 +48,7 @@
                         <p id="details_value"></p>
                     </div>
                     <div id="btntnSub" class="btntn">
+
                         <a id="true" class="grine" href="#">subscriped</a>
                         <a id="false" class="red" href="#">subscripe now !</a>
                     </div>
@@ -61,8 +62,16 @@
                 </div>
                 <!-- Stat Card -->
                 <section>
+                    <?php $is_premium = false;?>
                     @for ($p = 0; $p < count($storges); $p++)
-                    @if ( $storges[$p]["product_name"] == "premium")
+                    @if ($storges[$p]["product_name"] == "premium")
+                    @if ($storges[$p]["owend"] == 1 )
+                        <?php
+                        $is_premium = true;
+                        
+                        
+                        ?>
+                    @endif
                     <div id="golden" class="golden">
                         <div style="display: none;" class="data_father">
                             <p class="data_price_monthly"><?php echo $storges[$p]["month_price"] ?></p>
@@ -92,7 +101,18 @@
                                 <p class="data_price_monthly"><?php echo $storges[$i]["month_price"] ?></p>
                                 <p class="data_price_yearly"><?php echo $storges[$i]["year_price"] ?></p>
                                 <p class="data_key">/show/<?php echo $storges[$i]["product_id"] ?></p>
-                                <p class="data_isOwned"><?php echo $storges[$i]["owend"] ?></p>
+                                <p class="data_isOwned"><?php 
+                                if ($storges[$i]["owend"] == null) {
+                                  if ($is_premium == true) {
+                                    echo 2;    
+                                  }else {
+                                    echo $storges[$i]["owend"];
+                                  }
+                                }else {
+                                    echo $storges[$i]["owend"];
+                                }
+                                 ?>
+                                </p>
                                 <p class="data_vid"><?php echo $storges[$i]["vid"] ?></p>
                             </div>
                             <img src="<?php echo $storges[$i]["img"] ?>" alt="">
@@ -182,13 +202,21 @@
                 price_value_yearly.textContent = elmPrice_Yr.textContent + "$"
                 if (elemIsOwned.textContent == 1) {
                     notSupButton.href = '';
+                    isSupButton.textContent = "subscriped";
                     isSupButton.style.display = 'block'
                     notSupButton.style.display = 'none'
-                } else {
+                } else if (elemIsOwned.textContent == 2) {
+                    notSupButton.href = '';
+                    isSupButton.textContent = "You have premium";
+                    isSupButton.style.display = 'block'
+                    notSupButton.style.display = 'none'
+                } 
+                 else {
                     notSupButton.href = elemKey.textContent
                     isSupButton.style.display = 'none'
                     notSupButton.style.display = 'block'
                 }
+                
             };
         });
 
@@ -213,7 +241,7 @@ if (error.value != "") {
         icon: 'error',
         title: error.textContent,
         showConfirmButton: false,
-        timer: 5000
+        timer: 3000
     })
     }
 

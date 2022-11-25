@@ -56,6 +56,7 @@ class SubscriptionController extends Controller
         $stripeToken =   $request->input("stripeToken");
 
 
+
     
     $getip = file_get_contents("http://ip-api.com/json/213.112.129.244" );//$request->ip();
           $getip =json_decode($getip);

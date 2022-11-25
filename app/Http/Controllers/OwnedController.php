@@ -44,8 +44,9 @@ class OwnedController extends Controller
 
     $products = $request->session()->get('products');
     $products = $products["products"];
+  
 
-
+    
     $shows = [];
 
     for ($i = 0; $i < count($products); $i++) {

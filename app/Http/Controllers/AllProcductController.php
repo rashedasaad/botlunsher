@@ -113,6 +113,12 @@ class AllProcductController extends Controller
     
 
     for ($s=0; $s < count($storges); $s++) { 
+      if($storges[$s]["product_name"] == "premium"){
+        if($storges[$s]["owend"] == 1){
+          return redirect("/product")->with(['status' => "You have a premium", "bool" => false]);
+          
+        }
+      }
       if ($storges[$s]["product_id"] == $product) {
         if($storges[$s]["owend"] == 0){
           array_push($shows, $storges[$s]);
@@ -121,9 +127,6 @@ class AllProcductController extends Controller
         }
       }
     }
-
-
-
 
     return view("product", compact("shows"));
   }

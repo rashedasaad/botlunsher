@@ -82,28 +82,28 @@
                                 <img src="<?php print_r($response->img); ?>" alt="">
                                 <h2><?php print_r($response->product_name); ?></h2>
                                 <span class="title"><?php print_r($response->details); ?> </span>
+                                <p style="display: none" class="plan_id"><?php print_r($response->plan_id);?></p>
                                 <a class="cancel" href="#">cancel</a>
-
-                                <div class="card_new">
-                                    <span></span>
-                                    <div class="contenar11">
-                                        <div class="Icon_d">
-                                            <i id="card_Icon" class="fas fa-times"></i>
-                                        </div>
-                                        <h1>Are you sure that you want to cancle your subscription?</h1>
-                                        <form action="http://127.0.0.1:8000/cancel/sub/<?php print_r($response->plan_id); ?>"
-                                            method="POST">
-                                            @csrf
-                                            <input placeholder="password" type="password" name="password">
-                                            <div class="butoon">
-                                                <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
-                                                <input class="sub" type="submit" value="submit">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         @endforeach
+
+                        <div class="card_new">
+                            <span></span>
+                            <div class="contenar11">
+                                <div class="Icon_d">
+                                    <i id="card_Icon" class="fas fa-times"></i>
+                                </div>
+                                <h1>Are you sure that you want to cancle your subscription?</h1>
+                                <form id="form_cancel" action="" method="POST">
+                                    @csrf
+                                    <input placeholder="password" type="password" name="password">
+                                    <div class="butoon">
+                                        <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                                        <input class="sub" type="submit" value="submit">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
                     </div>
                 </section>
@@ -118,10 +118,14 @@
         // ==============================================
         let cancel = document.querySelectorAll(".cancel");
         let card_new = document.querySelector(".card_new");
+        let form_cancel = document.querySelector("#form_cancel");
         let card_Icon = document.querySelector(".contenar11 .Icon_d #card_Icon");
         console.log();
         cancel.forEach(element => {
             element.onclick = () => {
+                const plan_id = element.parentElement.querySelector(".plan_id").textContent;
+             
+                form_cancel.action = "http://127.0.0.1:8000/cancel/sub/" + plan_id;
                 card_new.style = "opacity: 1;transition: all 0.6s ease 0s;display: block;"
 
                 if (card_new !== "block") {
@@ -190,6 +194,8 @@
             }
       
         }
+
+
     </script>
 </body>
 
