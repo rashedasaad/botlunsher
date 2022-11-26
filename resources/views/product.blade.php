@@ -1,6 +1,4 @@
-<?php
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,11 +43,11 @@
                                     @csrf
                
                                     <input  value="<?php print_r($shows[0]["month"])?>" class="selectopt pric" name="interval" type="radio" id="1" checked>
-                                    <label for="1" class="option"> <?php echo "month"?> </label>
+                                    <label for="1" class="option"> <?php echo "month"?> || <?php print_r($shows[0]["price"][1]) ?> </label>
       
                
                                     <input  value="<?php print_r($shows[0]["year"])?>" class="selectopt pric" name="interval" type="radio" id="2" >
-                                    <label for="2" class="option"> <?php echo "year"?> </label>
+                                    <label for="2" class="option"> <?php echo "year"?> || <?php print_r($shows[0]["price"][0]) ?></label>
       
                                     <input type="hidden" name="productname" value="<?php print_r($shows[0]["product_id"]); ?>">
                             </div>

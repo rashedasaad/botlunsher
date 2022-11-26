@@ -59,9 +59,16 @@
         </div>
         <div class="bullet" data-section=".Log">
             <span></span>
+            @if (session("user_session"))
+            <div class="tooltip">Log out
+                <h6></h6>
+            </div>
+            @else
             <div class="tooltip">Log in
                 <h6></h6>
             </div>
+            @endif
+         
         </div>
     </div>
     <!-- End nav bullets -->

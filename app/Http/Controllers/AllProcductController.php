@@ -41,6 +41,8 @@ class AllProcductController extends Controller
     $products = $request->session()->get('products');
     $responses = $products["products"];
 
+
+
     $year = [];
     $month = [];
     $storges = [];

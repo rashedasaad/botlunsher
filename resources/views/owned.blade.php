@@ -22,12 +22,16 @@
 
 <body>
 
+
     @if (session('statusbad'))
-    <input class="error" type="hidden" value="{{ session('statusbad') }}">    
-    @elseif (session('status'))
-    <input class="error" type="hidden" value="{{ session('status') }}">    
+
+    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
+    <p style="display: none"  class="boolean">{{ session('bool') }}</p>
+
+    @elseif (session('status'))  
+    <p style="display: none"  class="error">{{ session('status') }}</p>
+    <p style="display: none" class="boolean">{{ session('bool') }}</p>
     @endif
-    
 
     <!-- Start menu -->
     <div class="asid">
@@ -38,12 +42,13 @@
                 </div>
                 <div class="leftt">
                     <div class="product">
-                        <h1>naum</h1>
+                        <h1>{{ session("user_session")["username"] }}</h1>
                     </div>
                     <div class="link">
                         <div class="top">
                             <a href="#">Account</a>
                             <a class="activ" href="/update">My Bots</a>
+                            <a href="/product">back to store</a>
                         </div>
                         <div class="bottom">
                             <a id="deletAccoun" class="redDelet" href="#">Delete Account</a>
@@ -71,7 +76,7 @@
             </div>
             <div class="com">
                 <div class="nav_Mini-Bots">
-                    <h1>naum</h1>
+                    <h1>{{ session("user_session")["username"] }}</h1>
                     <span></span>
                 </div>
                 <!-- Stat Card -->
@@ -81,8 +86,9 @@
                             <div class="box">
                                 <img src="<?php print_r($response->img); ?>" alt="">
                                 <h2><?php print_r($response->product_name); ?></h2>
-                                <span class="title"><?php print_r($response->details); ?> </span>
-                                <p style="display: none" class="plan_id"><?php print_r($response->plan_id);?></p>
+                                <span class="title"></span>
+                                <p style="display: none" class="plan_id"><?php print_r($response->plan_id); ?></p>
+                                <p style="display: none" class="timer"><?php print_r($response->will_end_at); ?></p>
                                 <a class="cancel" href="#">cancel</a>
                             </div>
                         @endforeach
@@ -116,15 +122,57 @@
 
     <script>
         // ==============================================
+
+        const changeEelemt = ({
+            date,
+            dateViwerElm,
+        }) => {
+            const myDate = new Date(date);
+
+            function getMonthDifference(startDate, endDate) {
+                return (endDate.getMonth() -
+                    startDate.getMonth() +
+                    12 * (endDate.getFullYear() - startDate.getFullYear()));
+            }
+
+            function getDaysifference(startDate, endDate) {
+                return Math.trunc((startDate.getTime() - endDate.getTime()) / (1000 * 3600 * 24));
+            }
+            var vlidDate = null;
+            if (getMonthDifference(new Date(), myDate) >= 1) {
+                vlidDate = getMonthDifference(new Date(), myDate);
+                dateViwerElm.textContent = `${vlidDate} Months remainig`;
+            } else if (getDaysifference(new Date(), myDate) >= 1) {
+                vlidDate = getDaysifference(new Date(), myDate);
+                dateViwerElm.textContent = `${vlidDate} days remainig`;
+            } else {
+                dateViwerElm.textContent = `it recharge today`;
+                setInterval(() => {
+                    if (myDate < new Date()) {
+                        window.location.reload();
+                    }
+                }, 1000 * 60);
+            }
+        };
+
         let cancel = document.querySelectorAll(".cancel");
         let card_new = document.querySelector(".card_new");
         let form_cancel = document.querySelector("#form_cancel");
         let card_Icon = document.querySelector(".contenar11 .Icon_d #card_Icon");
-        console.log();
+        const allboxs = document.querySelectorAll(".box")
+        allboxs.forEach(element => {
+            const dateElm = element.querySelector('.timer');
+            const dateViwer = element.querySelector('.title');
+            changeEelemt({
+                date: dateElm.textContent,
+                dateViwerElm: dateViwer,
+            });
+        })
         cancel.forEach(element => {
             element.onclick = () => {
+
                 const plan_id = element.parentElement.querySelector(".plan_id").textContent;
-             
+
                 form_cancel.action = "http://127.0.0.1:8000/cancel/sub/" + plan_id;
                 card_new.style = "opacity: 1;transition: all 0.6s ease 0s;display: block;"
 
@@ -182,20 +230,37 @@
 
         let error = document.querySelector(".error")
 
+
         if (error.value != "") {
-            if(error.value != ""){
-                Swal.fire({
+            Swal.fire({
                 position: 'top-end',
                 icon: 'error',
                 title: error.value,
                 showConfirmButton: false,
                 timer: 3000
-                })
-            }
-      
+            })
         }
 
 
+        if (error.value != "") {
+            if (bool.textContent == 1) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: error.textContent,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            } else if (bool.textContent == 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: error.textContent,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            }
+        }
     </script>
 </body>
 

@@ -56,7 +56,7 @@
             </div>
             <div class="com">
                 <div class="nav_Mini-Bots">
-                    <p>BACK</p>
+                   <a href="/"><p>BACK</p></a> 
                     <h1>Mini Bots</h1>
                     <a href="/update"><i class="fas fa-address-card"></i></a>
                 </div>
@@ -223,8 +223,6 @@
 
         let error = document.querySelector(".error")
         let bool = document.querySelector(".boolean")
-console.log(bool.textContent);
-
 
 if (error.value != "") {
     if(bool.textContent == 1){
@@ -244,7 +242,6 @@ if (error.value != "") {
         timer: 3000
     })
     }
-
 }
     </script>
 </body>

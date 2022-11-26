@@ -43,7 +43,6 @@ class HanterElm {
     async hanterScroll(dlay1, dlay2, func1, func2) {
         this.target.onwheel = async (e) => {
             if (this.#counter == 0 && cana_scroll) {
-                // console.log(cana_scroll)
                 this.#counter++
                 cana_scroll = false
                 if (String(e.wheelDeltaY).includes('-')) {

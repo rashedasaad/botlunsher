@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{env("APP_NAME")}}</title>
+    <title>{{ env('APP_NAME') }}</title>
     <!-- all.min.css -->
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
     <link rel="stylesheet" href="{{ URL::asset('scss/Account/Account.css') }}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
     <!-- Font-Googel -->
@@ -20,33 +20,40 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;1,500&family=Open+Sans:ital,wght@0,600;1,500;1,600&display=swap"
         rel="stylesheet">
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
+
 <body>
+
     @if (session('statusbad'))
-    <input class="error" type="hidden" value="{{ session('statusbad') }}">    
-    @elseif (session('status'))
-    <input class="error" type="hidden" value="{{ session('status') }}">    
+
+    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
+    <p style="display: none"  class="boolean">{{ session('bool') }}</p>
+
+    @elseif (session('status'))  
+    <p style="display: none"  class="error">{{ session('status') }}</p>
+    <p style="display: none" class="boolean">{{ session('bool') }}</p>
     @endif
-    
+
     <!-- Start menu -->
-    <form action="{{route("update")}}" method="POST"></form>
+    <form action="{{ route('update') }}" method="POST"></form>
     @csrf
     <div class="asid">
         <div class="asid_bag">
-        <div class="selct_box">
+            <div class="selct_box">
                 <div class="toggle-settings">
                     <i class="settin fas fa-cog fa-spin"></i>
                 </div>
 
                 <div class="leftt">
                     <div class="product">
-                        <h1>naum</h1>
+                        <h1>{{ session("user_session")["username"] }}</h1>
                     </div>
                     <div class="link">
                         <div class="top">
                             <a class="activ" href="#">Account</a>
                             <a href="/owned">My Bots</a>
+                            <a href="/product">back to store</a>
                         </div>
 
                         <div class="bottom">
@@ -75,12 +82,12 @@
             </div>
             <div class="com">
                 <div class="nav_Mini-Bots">
-                    <h1>naum</h1>
+                    <h1>{{ session("user_session")["username"] }}</h1>
                     <span></span>
                 </div>
                 <!-- Stat Card -->
                 <section>
-                    <h1>Text uoser name</h1>
+                    <h1>change your informtion</h1>
                     <div class="contenar">
                         <div class="card">
                             <button id="userbutt" class="glow-button" href="#">username</button>
@@ -93,7 +100,7 @@
                             <div class="contact">
                                 <!-- username -->
                                 <div id="username" class="username">
-                                    <form action="{{route("update")}}" method="post">
+                                    <form action="{{ route('update') }}" method="post">
                                         @csrf
                                         <input type="text" placeholder="username" name="username">
                                         <input type="password" name="last_password" placeholder="last password">
@@ -105,7 +112,7 @@
                                 </div>
                                 <!-- email -->
                                 <div style="display: none;" id="email" class="email">
-                                    <form action="{{route("update")}}" method="post">
+                                    <form action="{{ route('update') }}" method="post">
                                         @csrf
                                         <input type="text" placeholder="email" name="email">
                                         <input type="password" name="last_password" placeholder="last password">
@@ -117,11 +124,12 @@
                                 </div>
                                 <!-- password -->
                                 <div style="display: none;" id="password" class="password">
-                                    <form action="{{route("update")}}" method="post">
+                                    <form action="{{ route('update') }}" method="post">
                                         @csrf
-                                        <input type="password" name="last_password" placeholder="last password">         
+                                        <input type="password" name="last_password" placeholder="last password">
                                         <input type="password" name="newPasswrod" placeholder="new Password">
-                                        <input type="password" name="confirm_password" placeholder="confirm password">
+                                        <input type="password" name="confirm_password"
+                                            placeholder="confirm password">
                                         <div class="col-md-6"> {!! htmlFormSnippet() !!}</div>
                                         <div class="boteen">
                                             <input class="click" type="submit">
@@ -210,14 +218,12 @@
                             names.innerHTML = "username"
                             allDivs[i].style.display = "block";
                         };
-                    }
-                    else if (element == emailbutt) {
+                    } else if (element == emailbutt) {
                         if (allDivs[i] == email) {
                             names.innerHTML = "email"
                             allDivs[i].style.display = "block";
                         };
-                    }
-                    else if (element == passwordbutt) {
+                    } else if (element == passwordbutt) {
                         if (allDivs[i] == password) {
                             names.innerHTML = "password"
                             allDivs[i].style.display = "block";
@@ -226,6 +232,26 @@
                 };
             };
         });
+        if (error.value != "") {
+            if (bool.textContent == 1) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: error.textContent,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            } else if (bool.textContent == 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: error.textContent,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            }
+        }
     </script>
 </body>
+
 </html>

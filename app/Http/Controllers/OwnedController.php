@@ -22,8 +22,7 @@ class OwnedController extends Controller
 
     $products = $request->session()->get('products');
     $responses = $products["products"];
-
-
+    
     $rearrays = [];
     for ($i = 0; $i < count($responses); $i++) {
 
