@@ -181,7 +181,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+      
+            // a whole bunch of providers
+            // remove 'Laravel\Socialite\SocialiteServiceProvider',
+            \SocialiteProviders\Manager\ServiceProvider::class, // add
+      
         /*
          * Package Service Providers...
          */

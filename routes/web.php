@@ -10,7 +10,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\passwordBackController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\VerifictionController;
-
+use Illuminate\Support\Facades\URL;
 use Nette\Utils\Html;
 
 /*
@@ -24,14 +24,17 @@ use Nette\Utils\Html;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name("home");
 
+
+    Route::get('/', function () {
+        return view('index');
+    })->name("home");
 
 
 
 Route::middleware(["login"])->group(function () {
+    Route::get("/google", [LoginController::class, 'google']);
+    Route::get("/redirect_google", [LoginController::class, 'callback']);
     Route::get("/login", [LoginController::class, 'index'])->name("loginpage");
     Route::post("/store/login", [LoginController::class, 'store'])->name("login");
     Route::post("/store/register", [registerController::class, 'store'])->name("register");
@@ -59,4 +62,7 @@ Route::middleware(["is_login"])->group(function () {
     Route::get("/owned", [OwnedController::class, 'index']);
     Route::get("/cancel/{plan_id}", [OwnedController::class, 'cancle']);
     Route::post("/cancel/sub/{plan_id}", [OwnedController::class, 'store'])->name("cancel");
+    Route::get("/logout", [DeleteController::class, 'logout']);
+
 });
+

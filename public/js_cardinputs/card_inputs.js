@@ -1,79 +1,48 @@
-<?php
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-
-Route::middleware(['cors'])->group(function () {
-    Route::get('/js_cardinputs/card_inputs.js', function(){
-
-
-        echo "
-                
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <title></title>
-</head>
-<body>
-
-
-<script>
- 
-'use strict';
-        
-window.onload = () => {
-    const iframe = document.querySelector('iframe');
-    const form = iframe?.contentWindow?.document.querySelector('.ElementsApp');
-    console.log(form);
-    // const cvcInput = document.querySelector('#cardCvv') as HTMLInputElement
-    // const card = document.querySelector('.card') as HTMLDivElement
-    // const allInputs = document.querySelectorAll('input')
-    // const cardNumber = document.querySelector('.cardNumber')
-    // var w = 1
-    // for(let i = 0; i <= 20; i++){
-    //     if(i % 5 != 0){
-    //         const span:any = document.createElement('span')
-    //         span.style = `background: transparent;display: inline; border-radius: 0;`
-    //         span.textContent = '-'
-    //         span.dataset.inclode = w
-    //         w++
-    //         cardNumber!.appendChild(span)
-    //     } else {
-    //         const span:any = document.createElement('span')
-    //         span.style = `background: transparent;display: inline; border-radius: 0; margin-left:max(1vw, 1em)`
-    //         cardNumber!.appendChild(span)
-    //     }
-    // }
-    // allInputs.forEach(elm => {
-    //     elm.onfocus = () => {
-    //         card.style.transform = 'translate(-50%, -120%)'
-    //     }
-    // })
-    // cvcInput.onfocus = () => {
-    //     card.style.transform = 'translate(-50%, -120%) rotateY(180deg)'
-    // }
-    // rplaceDiplayer('cardHolderInput', '#holderName')
-    // rplaceDiplayer('cardCvv', '.cvcNuber')
-    // rplaceDiplayer('cardMonth', '#munthEX')
-    // rplaceDiplayer('cardYear', '#yearEX')
-    // rplaceCardNumberInput( 'cord_number', '.cardNumber')
+"use strict";
+const aa = async () => {
+    const coco = await window.fetch('/api/js_cardinputs/card_inputs.js');
+    const code = await coco.text();
+    const finalCode = code.split('<script>')[1].split('</script>')[0];
+    eval(finalCode);
 };
+aa();
+// window.onload = async() => {
+// const iframe = document.querySelector('iframe')
+// const form = iframe?.contentWindow?.document.querySelector('.ElementsApp')
+// console.log(form)
+// const cvcInput = document.querySelector('#cardCvv') as HTMLInputElement
+// const card = document.querySelector('.card') as HTMLDivElement
+// const allInputs = document.querySelectorAll('input')
+// const cardNumber = document.querySelector('.cardNumber')
+// var w = 1
+// for(let i = 0; i <= 20; i++){
+//     if(i % 5 != 0){
+//         const span:any = document.createElement('span')
+//         span.style = `background: transparent;display: inline; border-radius: 0;`
+//         span.textContent = '-'
+//         span.dataset.inclode = w
+//         w++
+//         cardNumber!.appendChild(span)
+//     } else {
+//         const span:any = document.createElement('span')
+//         span.style = `background: transparent;display: inline; border-radius: 0; margin-left:max(1vw, 1em)`
+//         cardNumber!.appendChild(span)
+//     }
+// }
+// allInputs.forEach(elm => {
+//     elm.onfocus = () => {
+//         card.style.transform = 'translate(-50%, -120%)'
+//     }
+// })
+// cvcInput.onfocus = () => {
+//     card.style.transform = 'translate(-50%, -120%) rotateY(180deg)'
+// }
+// rplaceDiplayer('cardHolderInput', '#holderName')
+// rplaceDiplayer('cardCvv', '.cvcNuber')
+// rplaceDiplayer('cardMonth', '#munthEX')
+// rplaceDiplayer('cardYear', '#yearEX')
+// rplaceCardNumberInput( 'cord_number', '.cardNumber')
+// }
 const rplaceCardNumberInput = (inputId, displaierSelector) => {
     const input = document.getElementById(inputId);
     const diplaier = document.querySelector(displaierSelector);
@@ -226,13 +195,3 @@ const rplaceDiplayer = (inputId, displaierSelector) => {
         }
     };
 };
-</script>
-</body>
-</html>
-
-       
-        ";
-   
-    });
-
-});

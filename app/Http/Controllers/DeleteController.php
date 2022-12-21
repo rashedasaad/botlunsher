@@ -37,7 +37,7 @@ class DeleteController extends Controller
        ]);
        $password =   $request->input("password");
        if (FuncController::passwordfilter($password) == "fail") {
-        return redirect("/")->with('statusbad', "The password is not correct");
+        return redirect("/")->with('statusbad', "The password is not invaild");
     }
         $user_session = $request->session()->get("user_session");
       $id =  $user_session["user_id"];

@@ -46,7 +46,7 @@
                     </div>
                     <div class="link">
                         <div class="top">
-                            <a href="#">Account</a>
+                            <a href="/update">Account</a>
                             <a class="activ" href="/update">My Bots</a>
                             <a href="/product">back to store</a>
                         </div>

@@ -61,7 +61,7 @@ class registerController extends Controller
         if (strlen($password) > 30) {
             
       
-            return redirect("/login")->with('statusbad', "the password is big");
+            return redirect("/login")->with('statusbad', "The password is to long it's must be under 30");
         }
         if (strlen($password) < 8) {
           
@@ -98,7 +98,6 @@ class registerController extends Controller
                             'email' => $email,
                         ],
                         [
-    
                             'name' => $username,
                             "password" =>  $password,
                             "code_link" => $ver,

@@ -6,6 +6,7 @@ use App\Http\Middleware\login;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Http\Request;
 Use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 use Cartalyst\Stripe\Api\Customers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -13,7 +14,31 @@ use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
+    public function google()
+    {           //Socialite
+        return Socialite::driver('google')->redirect();
+    }
+    public function callback(Request $request)
+    {       
+  /* ما خلاصت شغل
+  
+        $sad = Socialite::driver('google')->user();
 
+        if ($login->res == "rash_2") {
+            return redirect("/login")->with('statusbad', $login->msg);
+        };
+
+        $request->session()->put("user_session", [
+            "user_id" => $login->userData->id_ququ,
+            "username" => $login->userData->username_ququ,
+            "email" => $login->userData->email_ququ,
+            "is_ban" => $login->userData->is_ban,
+            "customer_id" => $login->userData->stripe_id
+        ]);
+       return dd($sad);
+*/
+
+    }
 
     public function index()
     {
