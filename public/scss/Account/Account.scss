@@ -289,8 +289,10 @@ ul {
                                 }
         
                                 .butoon {
-                                    text-align: right;
-                                    margin: max(2vw, 2em) 0 0;
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
         
                                     .sub {
                                         color: white;
@@ -603,7 +605,7 @@ ul {
                                     .boteen {
                                         width: 100%;
                                         display: flex;
-                                        justify-content: flex-end;
+                                        justify-content: space-between;
 
                                         .click {
                                             border: none;
@@ -653,7 +655,7 @@ ul {
                                     .boteen {
                                         width: 100%;
                                         display: flex;
-                                        justify-content: flex-end;
+                                        justify-content: space-between;
 
                                         .click {
                                             border: none;
@@ -703,7 +705,7 @@ ul {
                                     .boteen {
                                         width: 100%;
                                         display: flex;
-                                        justify-content: flex-end;
+                                        justify-content: space-between;
 
                                         .click {
                                             border: none;

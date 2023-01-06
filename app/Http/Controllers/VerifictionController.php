@@ -22,7 +22,6 @@ class VerifictionController extends Controller
     {
         $request->validate([
             "code" => "required",
-
         ]);
 
         $code =  $request->input("code");

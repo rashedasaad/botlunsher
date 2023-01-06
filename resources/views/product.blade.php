@@ -36,18 +36,18 @@
                             <h1>  <?php print_r($shows[0]["product_name"]); ?></h1>
                         </div>
                         <div class="Pprasing">
-                            <h1>month pris <span>$<?php print_r($shows[0]["price"][1]) ?></span></h1>
+                            <h1>month pris <span>$<?php print_r($shows[0]["month_price"]) ?></span></h1>
                             <p>All prices include VAT.</p>
                             <div class="select" tabindex="1">
                                 <form action="{{ route('getProduct') }}"  method="POST">
                                     @csrf
                
-                                    <input  value="<?php print_r($shows[0]["month"])?>" class="selectopt pric" name="interval" type="radio" id="1" checked>
-                                    <label for="1" class="option"> <?php echo "month"?> || <?php print_r($shows[0]["price"][1]) ?> </label>
+                                    <input  value="<?php print_r($shows[0]["month_plan"])?>" class="selectopt pric" name="interval" type="radio" id="1" checked>
+                                    <label for="1" class="option"> <?php echo "month"?> || <?php print_r($shows[0]["month_price"]) ?> </label>
       
                
-                                    <input  value="<?php print_r($shows[0]["year"])?>" class="selectopt pric" name="interval" type="radio" id="2" >
-                                    <label for="2" class="option"> <?php echo "year"?> || <?php print_r($shows[0]["price"][0]) ?></label>
+                                    <input  value="<?php print_r($shows[0]["year_plan"])?>" class="selectopt pric" name="interval" type="radio" id="2" >
+                                    <label for="2" class="option"> <?php echo "year"?> || <?php print_r($shows[0]["year_price"]) ?></label>
       
                                     <input type="hidden" name="productname" value="<?php print_r($shows[0]["product_id"]); ?>">
                             </div>

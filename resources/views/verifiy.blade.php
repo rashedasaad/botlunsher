@@ -1,11 +1,12 @@
+!
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{env("APP_NAME")}}</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ env('APP_NAME') }}</title>
     <!-- all.min.css -->
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
@@ -59,19 +60,23 @@
             <div class="text">
                 <h1>Reset <span>Password</span></h1>
             </div>
-            <div class="Reset_Form">
-                <form action="http://localhost:8000/store/verifiy/<?php echo $code_link ?>" method="POST">
+          
+    
+                <div class="Reset_Form">
+                    <form action="/store/verifiy/{{$code_link;}}" method="post">
                     @csrf
-      
-                <p>
-                    <input class="input-box" type="number" placeholder="verify code" name="code">
-                </p>
+                    <p>
+                        <input class="input-box" type="text" placeholder="verify code" name="code">
+                    </p>
 
-                <div class="btnnu">
-                    <input class="btn" type="submit" name="reset-btn" id="reset-btn" value="verify">
+                    <div class="btnnu">
+                        <input class="btn" type="submit" name="reset-btn" id="reset-btn">
+                    </div>
+                </form>
                 </div>
-            </form>
-            </div>
+
+          
+
         </div>
     </div>
 
@@ -79,7 +84,10 @@
         const effect = document.querySelector(`.effect`).children;
         const span = document.querySelectorAll(`.effect_container .effect span`);
 
-        const width = ['200px', '300px', '400px', '200px', '300px', '400px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px', '200px'];
+        const width = ['200px', '300px', '400px', '200px', '300px', '400px', '400px', '300px', '200px', '400px', '300px',
+            '200px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px', '200px', '400px', '300px',
+            '200px'
+        ];
         for (eff of effect) {
             let ran = Math.trunc(Math.random() * 300) + 'px';
             eff.style.width = ran;

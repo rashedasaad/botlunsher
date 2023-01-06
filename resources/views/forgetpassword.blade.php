@@ -99,8 +99,8 @@
                     <p>
                         <input class="username-input" placeholder="email" type="email" name="email" id="username">
                     </p>
-                    <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                     <div class="button">
+                        <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                         <input type="submit">
                     </div>
                 </form>

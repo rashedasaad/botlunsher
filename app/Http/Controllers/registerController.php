@@ -91,7 +91,7 @@ class registerController extends Controller
                 ];
 
 
-                try {
+               try {
                     Mail::to($email)->send(new verfiy($data));
                     $SS = User::updateOrCreate(
                         [
@@ -106,8 +106,8 @@ class registerController extends Controller
                     );
                     return redirect("/login")->with('status', "check you mailbox");
     
-                } catch (\Throwable $th) {
-                    return response()->json(["sorry there was a problem and we cannat complit the prossece"]);
+            } catch (\Throwable $th) {
+                 return response()->json(["sorry there was a problem and we cannat complit the prossece"]);
                 }
                 
             }

@@ -53,15 +53,23 @@ Route::middleware(["is_login"])->group(function () {
     Route::get("/payment/{name}/{plan}", [SubscriptionController::class, 'index']);
     Route::post("/store/product", [SubscriptionController::class,  'getProduct'])->name("getProduct");
     Route::post('/user/subscribe', [SubscriptionController::class,  'store'])->name("subscribe");
+
     Route::get("/product", [AllProcductController::class, "showpproduct"])->name("plan");
     Route::get("/show/{product}", [AllProcductController::class, 'show']);
+
+
     Route::get("/delete", [DeleteController::class, 'index']);
     Route::post("/store/delete", [DeleteController::class, 'store'])->name("delete");
     Route::get("/download", [DeleteController::class, 'indexdownload']);
     Route::post("/store/check", [DeleteController::class, 'isban'])->name("isban");
     Route::get("/owned", [OwnedController::class, 'index']);
+    Route::get("/runner", [OwnedController::class, 'runnerback']);
+    Route::get("/runner/{script_name}", [OwnedController::class, 'runner']);
     Route::get("/cancel/{plan_id}", [OwnedController::class, 'cancle']);
     Route::post("/cancel/sub/{plan_id}", [OwnedController::class, 'store'])->name("cancel");
+    Route::post("configrate", [OwnedController::class, 'configrate'])->name("configrate");
+    Route::post("update_script", [OwnedController::class, 'update_script'])->name("update_script");
+    Route::post("run_script", [OwnedController::class, 'run_script'])->name("run_script");
     Route::get("/logout", [DeleteController::class, 'logout']);
 
 });

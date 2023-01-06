@@ -7,10 +7,13 @@ use Illuminate\Support\Facades\Http;
 
 class UpdateController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware("google");
+    }
     public function index()
     {
-      return view("update");
+        return view("update");
     }
 
     public function update($username, $password, $rePassword, $last_password, $email, $id)
@@ -37,17 +40,30 @@ class UpdateController extends Controller
             "last_password" => "required",
         ]);
 
-        if ($password != $confirm_password) {
-            return redirect("/update")->with('statusbad', "The password is not the same");
+
+        if ($email != "") {
+
+            if (FuncController::emailfilter($email) == "fail") {
+                return redirect("/update")->with('statusbad', "The email is not vaild");
+            }        
+
+        }
+        if ($last_password != "") {
+
+            if (FuncController::passwordfilter($last_password) == "fail") {
+                return redirect("/update")->with('statusbad', "The password is not vaild");
+            }
+        }
+        if ($password != "") {
+
+            if (FuncController::passwordfilter($password) == "fail") {
+                return redirect("/update")->with('statusbad', "The password is not vaild");
+            }
         }
 
-        if (FuncController::emailfilter($email) == "fail") {
-            return redirect("/update")->with('statusbad', "The email is not vaild");
-        }
-        if (FuncController::passwordfilter($password) == "fail") {
-            return redirect("/update")->with('statusbad', "The password is not vaild");
-        }
+
         $email =  FuncController::xssfilter($email);
+        $username =  FuncController::xssfilter($username);
         $id = $user_session["user_id"];
 
         $update = $this->update($username, $password, $confirm_password, $last_password, $email, $id);

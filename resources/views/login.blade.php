@@ -24,10 +24,10 @@
 </head>
 
 <body>
-    @if ( session('statusbad'))
-    <input class="error" type="hidden" value="{{ session('statusbad') }}">    
+    @if (session('statusbad'))
+        <input class="error" type="hidden" value="{{ session('statusbad') }}">
     @endif
-    
+
 
     <div class="appearance"></div>
 
@@ -43,7 +43,7 @@
             <!-- form -->
             <div class="AllForm">
                 <form class="main-form" action="http://127.0.0.1:8000/store/login" method="POST">
-                        @csrf
+                    @csrf
                     <p>
                         <input type="text" placeholder="Username or email" name="loginusername">
                     </p>
@@ -58,7 +58,19 @@
                     </div>
                     <div class="button">
                         <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
-                        <input id="Swal" type="submit">
+                        <div class="link_Di">
+
+                            <div class="google-btn">
+                                <div class="google-icon-wrapper">
+                                    <img class="google-icon"
+                                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                                </div>
+                                <a href="/google">
+                                    <button  class="btn-text"><b>Sign in with google </b></button>
+                                </a>
+                                </div>
+                            <input id="Swal" type="submit">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -70,40 +82,41 @@
             <div class="create">
                 <form class="main-form" action="http://127.0.0.1:8000/store/register" method="POST">
                     @csrf
-                <div class="allform">
-                    <input placeholder="username" name="regusername" type="text">
-                    <input placeholder="your email" name="regemail" type="email">
+                    <div class="allform">
+                        <input placeholder="username" name="regusername" type="text">
+                        <input placeholder="your email" name="regemail" type="email">
 
-                    <div class="inputBox">
-                        <input placeholder="password" name="regpassword" type="password" id="Mathe_1" onkeyup="checkPassword(this.value)">
-                        <span id="toggl"></span>
+                        <div class="inputBox">
+                            <input placeholder="password" name="regpassword" type="password" id="Mathe_1"
+                                onkeyup="checkPassword(this.value)">
+                            <span id="toggl"></span>
+                        </div>
+
+                        <input placeholder="confirm password" name="regrepassword" id="con_password" type="password"
+                            id="Mathe_2" onkeyup="MathePassword(this.value)">
                     </div>
-
-                    <input placeholder="confirm password" name="regrepassword" id="con_password" type="password" id="Mathe_2"
-                        onkeyup="MathePassword(this.value)">
-                </div>
-                <div class="validation">
-                    <ul>
-                        <div class="left">
-                            <li id="password_1"> Ensure string has two uppercase letters.</li>
-                            <li id="password_2">Ensure string has one special case letter. </li>
-                            <li id="password_3">Ensure string has two digits.</li>
-                        </div>
-                        <div class="right">
-                            <li id="password_4">Ensure string has three lowercase letters.</li>
-                            <li id="password_5">Ensure string is of length 8.                            </li>
-                            <li id="Mathe">Mathe</li>
-                        </div>
-                    </ul>
-                </div>
-                <div class="loginAcc">
-                    <p id="log">login Account</p>
-                </div>
-                <div class="button">
-                    <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
-                    <input type="submit">
-                </div>
-             </form>
+                    <div class="validation">
+                        <ul>
+                            <div class="left">
+                                <li id="password_1"> Ensure string has two uppercase letters.</li>
+                                <li id="password_2">Ensure string has one special case letter. </li>
+                                <li id="password_3">Ensure string has two digits.</li>
+                            </div>
+                            <div class="right">
+                                <li id="password_4">Ensure string has three lowercase letters.</li>
+                                <li id="password_5">Ensure string is of length 8. </li>
+                                <li id="Mathe">Mathe</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="loginAcc">
+                        <p id="log">login Account</p>
+                    </div>
+                    <div class="button">
+                        <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                        <input type="submit">
+                    </div>
+                </form>
             </div>
         </section>
     </div>
@@ -112,7 +125,6 @@
 
     <script src="{{ URL::asset('js/login.js') }}"></script>
     <script>
-
         // Popap
         let error = document.querySelector(".error")
 
@@ -125,9 +137,8 @@
                 timer: 2000
             })
         }
-// Popap
-
-
+        // Popap
     </script>
 </body>
+
 </html>

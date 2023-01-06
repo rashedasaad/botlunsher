@@ -24,7 +24,7 @@
   height: max(2vw, 2em);
   background-color: transparent;
   border: max(0.2vw, 0.2em) solid white;
-  margin: max(1vw, 1em) max(1vw, 1em) max(1vw, 1em) max(1vw, 1em);
+  margin: max(1vw, 1em) 0 0 auto;
   cursor: pointer;
 }
 .nav-bullets .bullet .tooltip {

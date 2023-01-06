@@ -118,7 +118,7 @@ bullet[2].onclick = async () => {
         footer.target.style.display = `none`;
 
         await sleep(500)
-        nav_bullets.target.style = "filter: blur(0px);position: absolute;gap: 25px;background-color: rgba(24, 21, 55, 0.44);backdrop-filter: blur(12px);padding: max(1vw, 1em);box-shadow: max(0vw, 0em) max(0vw, 0em) max(2vw, 2em) max(-1.6vw, -1.6em) #00000075;display: flex;left: 50%;flex-flow: column wrap;place-content: center space-between;transform: translate(-50%, -50%);align-items: center;z-index: 1;"
+        nav_bullets.target.style = "filter: blur(0px);position: absolute;gap: 25px;background-color: rgba(24, 21, 55, 0.44);backdrop-filter: blur(12px);padding: max(1vw, 1em);box-shadow: max(0vw, 0em) max(0vw, 0em) max(2vw, 2em) max(-1.6vw, -1.6em) #00000075;display: flex;gap: 35px;left: 50%;flex-flow: column wrap;place-content: center space-between;transform: translate(-50%, -50%);align-items: center;z-index: 1;"
         for (let tooltip of tooltips) {
             tooltip.style = "transition: ease 2s;display: block;position: inherit;font-size: max(1.5vw, 1.5em);text-align: center;padding: 0;cursor: default;right: 0;pointer-events: none;background-color: transparent;width: fit-content;top: 0; color: #6C63FF;"
         }
@@ -182,7 +182,8 @@ bullet[3].onclick = async () => {
         }
 
         await sleep(500)
-        nav_bullets.target.style = "opacity: 1;filter: blur(0px);position: absolute;background-color: rgb(24 21 55 / 40%);backdrop-filter: blur(30px); padding: 20px;box-shadow: black 0px 0px 16px -3px;display: flex;gap: 75px;left: 50%;width: 79%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -50%);align-items: cente";
+        nav_bullets.target.style = "filter: blur(0px);position: absolute;background-color: rgba(24, 21, 55, 0.4);backdrop-filter: blur(30px);padding: max(1vw, 1em);box-shadow: black 0px 0px 16px -3px;display: flex;left: 50%;width: 90%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -50%);transition: all 1.3s ease 0s;";
+
         for (let h6 of navBullets_h6) {
             h6.style = "height: 0;width: 0;right: 0;z-index: 0;border-style: solid;border-width: 0;border-radius: 0;top: 0;transform: translateY(0%);border-color: transparent transparent transparent transparent;";
         }
@@ -221,11 +222,11 @@ bullet[4].onclick = async () => {
         footer.target.style.display = `none`;
 
         Pricing.target.style.display = `block`;
-        
+
         effect_children.target.style.opacity = `0`;
 
         await sleep(500)
-        nav_bullets.target.style = "opacity: 1;filter: blur(0px); position: absolute;background-color: rgb(0, 206, 121);backdrop-filter: blur(30px);padding: 20px;box-shadow: black 0px 0px 16px -3px;display: flex;gap: 75px;left: 50%;top: 480px;width: 79%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -360px);flex-wrap: wrap;";
+        nav_bullets.target.style = "opacity: 1;filter: blur(0px);position: absolute;background-color: rgb(0, 206, 121);backdrop-filter: blur(30px);padding: 20px;box-shadow: black 0px 0px 16px -3px;display: flex;gap: 35px;left: 50%;top: 480px;width: 83%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -360px);";
         for (let bullet of bullets) {
             bullet.style = " position: relative;cursor: pointer;width: fit-content;font-size: max(1vw, 1em);height: fit-content;margin: 20px auto; border: none;border-radius: 0px;"
         }

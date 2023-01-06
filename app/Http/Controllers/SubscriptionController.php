@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
 
 
     
-    $getip = file_get_contents("http://ip-api.com/json/213.112.129.244" );//$request->ip();
+    $getip = file_get_contents("http://ip-api.com/json/213.112.129.244" );
           $getip =json_decode($getip);
 
      
@@ -67,6 +67,8 @@ class SubscriptionController extends Controller
         $cad  = $this->card($customer_id, $user_id, $product_name, $plan, $email,$stripeToken, $getip->countryCode,  $getip->city);
 
          if ($cad->res == "rash_1") {
+
+            
             $request->session()->forget('products');
             return redirect("/product")->with(['status' => "successful subscription", "bool" => true]);
          }elseif($cad->res == "rash_2") {

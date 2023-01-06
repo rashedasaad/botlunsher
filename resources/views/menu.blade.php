@@ -76,15 +76,15 @@
                         <div style="display: none;" class="data_father">
                             <p class="data_price_monthly"><?php echo $storges[$p]["month_price"] ?></p>
                             <p class="data_price_yearly"><?php echo $storges[$p]["year_price"] ?></p>
-                            <p class="data_key">/show/<?php echo $storges[$p]["product_id"] ?></p>
+                            <p class="data_key">/show/<?php echo $storges[$p]["product_id"]?></p>
                             <p class="data_isOwned"><?php echo $storges[$p]["owend"] ?></p>
                             <p class="data_vid"><?php echo $storges[$p]["vid"] ?></p>
                         </div>
                         <img src="<?php echo $storges[$p]["img"] ?>" alt="">
-                        <h2> <?php echo $storges[$p]["product_name"] ?> </h2>
+                        <h2><?php echo $storges[$p]["product_name"]?></h2>
                         <span class="title"> <?php echo $storges[$p]["details"] ?></span>
                         <div class="buteen change_Boxe">
-                            <a href="#">Choose Plan</a>
+                            <a href="#">Choose</a>
                         </div>
                     </div>
                      @break;
@@ -92,15 +92,15 @@
                     @endfor
 
                     <div class="contenar">
-                        @for ($i = 0; $i < count($storges)  ; $i++)
-                        @if( $storges[$i]["product_name"] == "premium")
+                        @for ($i = 0; $i < count($storges) ; $i++)
+                        @if($storges[$i]["product_name"] == "premium")
                         @continue;
                         @endif
                         <div class="box">
                             <div style="display: none;" class="data_father">
-                                <p class="data_price_monthly"><?php echo $storges[$i]["month_price"] ?></p>
-                                <p class="data_price_yearly"><?php echo $storges[$i]["year_price"] ?></p>
-                                <p class="data_key">/show/<?php echo $storges[$i]["product_id"] ?></p>
+                                <p class="data_price_monthly"><?php  echo isset($storges[$i]["month_price"]) != false ?  $storges[$i]["month_price"]: "free"  ?></p>
+                                <p class="data_price_yearly"><?php echo isset($storges[$i]["year_price"]) != false ?  $storges[$i]["year_price"]:  "free" ?></p>
+                                <p class="data_key">/show/<?php echo isset($storges[$i]["product_id"]) != false ? $storges[$i]["product_id"] : "free" ?></p>
                                 <p class="data_isOwned"><?php 
                                 if ($storges[$i]["owend"] == null) {
                                   if ($is_premium == true) {
@@ -115,10 +115,10 @@
                                 </p>
                                 <p class="data_vid"><?php echo $storges[$i]["vid"] ?></p>
                             </div>
-                            <img src="<?php echo $storges[$i]["img"] ?>" alt="">
+                            <img src="<?php echo $storges[$i]["img"]?>" alt="">
                             <h2><?php echo $storges[$i]["product_name"] ?></h2>
                             <span id="details" class="title"><?php echo $storges[$i]["details"] ?></span>
-                            <a class="choose-plan change_Boxe" href="#">Choose Plan</a>
+                            <a class="choose-plan change_Boxe" href="#">Choose</a>
                         </div>
                         
                         @endfor
@@ -202,12 +202,14 @@
                 price_value_yearly.textContent = elmPrice_Yr.textContent + "$"
                 if (elemIsOwned.textContent == 1) {
                     notSupButton.href = '';
-                    isSupButton.textContent = "subscriped";
+                    isSupButton.href = `/runner/${elemName.textContent}`
+                    isSupButton.textContent = "use it"
                     isSupButton.style.display = 'block'
                     notSupButton.style.display = 'none'
                 } else if (elemIsOwned.textContent == 2) {
                     notSupButton.href = '';
-                    isSupButton.textContent = "You have premium";
+                    isSupButton.href = `/runner/${elemName.textContent}`
+                    isSupButton.textContent = "use it";
                     isSupButton.style.display = 'block'
                     notSupButton.style.display = 'none'
                 } 

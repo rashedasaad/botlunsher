@@ -89,12 +89,77 @@ class FuncController extends Controller
     return  $xss_filter;
   }
 
-  public static  function linkfilter($str)
+  public static function linkfilter($str)
   {
     $danger = array("<", ">","(", ")", "/","!","?","=","*", "<script>", "%", "&");
     $xss_filter = str_replace($danger, "", $str);
     return  $xss_filter;
   }
 
-  
+
+  public static function createproductsession(Request $request){
+
+    $pro = $request->session()->get("products");
+    if (!$pro) {
+      $user = $request->session()->get('user_session');
+      $customer_id = $user["customer_id"];
+      $showpproducts = FuncController::sentget("/scripts/view/get_all", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE"), "customer_id" => $customer_id, "version_nums" => []]);
+      $freescripts = FuncController::sentget("/scripts/view/get_all_free", [env("API_ADMIN_BODY_APIKEY_KEY") => env("API_ADMIN_BODY_APIKEY_VALUE")]);
+      $merge = array_merge($showpproducts->userData, $freescripts->userData);
+
+      for ($i = 0; $i < count($merge); $i++) {
+        unset($merge[$i]->versions);
+      }
+
+       $productssestion = $request->session()->put("products", ["products" => $merge]);
+
+       $pro = $request->session()->get("products");
+      $responses = $pro["products"];
+
+
+      $year = [];
+      $month = [];
+      $free = [];
+      $storges = [];
+      $rearrays = [];
+      for ($i = 0; $i < count($responses); $i++) {
+        if (isset($responses[$i]->interval) != false) {
+          if ($responses[$i]->interval == "year") {
+            array_push($year, $responses[$i]);
+          }
+          if ($responses[$i]->interval == "month") {
+            array_push($month, $responses[$i]);
+          }
+        } else {
+          array_push($free, $responses[$i]);
+        }
+      }
+
+      for ($i = 0; $i < count($year); $i++) {
+        for ($m = 0; $m < count($month); $m++) {
+
+
+          if ($year[$i]->product_name == $month[$m]->product_name) {
+            if ($year[$i]->owned == true) {
+              array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+            } elseif ($month[$i]->owned == true) {
+              array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+            } else {
+              array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name,"year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id, "product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+            }
+          }
+        }
+      }
+      for ($d = 0; $d < count($free); $d++) {
+        if ($free[$d]->owned == true) {
+          array_push($storges,  ["owend" => $free[$d]->owned, "product_name" => $free[$d]->product_name,  "product_id" =>"free" , "details" => $free[$d]->details, "img" => $free[$d]->img, "vid" => $free[$d]->vid]);
+        }
+      }
+
+      $request->session()->put("allproducts", $storges);
+
+
+    }
+
+  }
 }

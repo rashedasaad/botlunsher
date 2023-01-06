@@ -308,6 +308,10 @@ section::-webkit-scrollbar-thumb {
 }
 .menu .menu_bag .com section .golden .buteen {
   text-align: end;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 0 0 auto;
 }
 .menu .menu_bag .com section .golden .buteen a {
   color: #000000;

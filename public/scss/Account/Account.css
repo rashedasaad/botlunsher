@@ -296,8 +296,10 @@ ul {
   color: transparent;
 }
 .asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon {
-  text-align: right;
-  margin: max(2vw, 2em) 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon .sub {
   color: white;
@@ -604,7 +606,7 @@ ul {
 .asid .asid_bag .com section .contenar .informations .contact .username form .boteen {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .asid .asid_bag .com section .contenar .informations .contact .username form .boteen .click {
   border: none;
@@ -667,7 +669,7 @@ ul {
 .asid .asid_bag .com section .contenar .informations .contact .email form .boteen {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .asid .asid_bag .com section .contenar .informations .contact .email form .boteen .click {
   border: none;
@@ -730,7 +732,7 @@ ul {
 .asid .asid_bag .com section .contenar .informations .contact .password form .boteen {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .asid .asid_bag .com section .contenar .informations .contact .password form .boteen .click {
   border: none;

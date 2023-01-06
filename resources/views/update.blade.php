@@ -26,13 +26,11 @@
 <body>
 
     @if (session('statusbad'))
-
-    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
-    <p style="display: none"  class="boolean">{{ session('bool') }}</p>
-
-    @elseif (session('status'))  
-    <p style="display: none"  class="error">{{ session('status') }}</p>
-    <p style="display: none" class="boolean">{{ session('bool') }}</p>
+        <p style="display: none" class="error">{{ session('statusbad') }}</p>
+        <p style="display: none" class="boolean">{{ session('bool') }}</p>
+    @elseif (session('status'))
+        <p style="display: none" class="error">{{ session('status') }}</p>
+        <p style="display: none" class="boolean">{{ session('bool') }}</p>
     @endif
 
     <!-- Start menu -->
@@ -47,7 +45,7 @@
 
                 <div class="leftt">
                     <div class="product">
-                        <h1>{{ session("user_session")["username"] }}</h1>
+                        <h1>{{ session('user_session')['username'] }}</h1>
                     </div>
                     <div class="link">
                         <div class="top">
@@ -82,7 +80,7 @@
             </div>
             <div class="com">
                 <div class="nav_Mini-Bots">
-                    <h1>{{ session("user_session")["username"] }}</h1>
+                    <h1>{{ session('user_session')['username'] }}</h1>
                     <span></span>
                 </div>
                 <!-- Stat Card -->
@@ -104,8 +102,8 @@
                                         @csrf
                                         <input type="text" placeholder="username" name="username">
                                         <input type="password" name="last_password" placeholder="last password">
-                                        <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                         <div class="boteen">
+                                            <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                             <input class="click" type="submit">
                                         </div>
                                     </form>
@@ -116,8 +114,8 @@
                                         @csrf
                                         <input type="text" placeholder="email" name="email">
                                         <input type="password" name="last_password" placeholder="last password">
-                                        <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                         <div class="boteen">
+                                            <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                             <input class="click" type="submit">
                                         </div>
                                     </form>
@@ -130,8 +128,8 @@
                                         <input type="password" name="newPasswrod" placeholder="new Password">
                                         <input type="password" name="confirm_password"
                                             placeholder="confirm password">
-                                        <div class="col-md-6"> {!! htmlFormSnippet() !!}</div>
                                         <div class="boteen">
+                                            <div class="col-md-6"> {!! htmlFormSnippet() !!}</div>
                                             <input class="click" type="submit">
                                         </div>
                                     </form>

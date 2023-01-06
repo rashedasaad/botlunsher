@@ -26,6 +26,6 @@ class verfiy extends Mailable
 
     public function build()
     {
-        return $this->from("vamokan641@haboty.com","botlunsher")->subject($this->information["subject"])->markdown("mail")->with("info",$this->information);
+        return $this->from("rashedhamood66@gmail.com","botlunsher")->subject($this->information["subject"])->markdown("mail")->with("info",$this->information);
     }
 }

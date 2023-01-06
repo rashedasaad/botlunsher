@@ -289,8 +289,10 @@ ul {
   color: transparent;
 }
 .asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon {
-  text-align: right;
-  margin: max(2vw, 2em) 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .asid .asid_bag .selct_box .leftt .link .bottom .delet_new .contenar11 .butoon .sub {
   color: white;
@@ -546,13 +548,14 @@ ul {
   color: transparent;
 }
 .asid .asid_bag .com section .card_new .contenar11 .butoon {
-  text-align: right;
-  margin: 60px 0 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .asid .asid_bag .com section .card_new .contenar11 .butoon .sub {
   color: white;
-  padding: max(0.3vw, 0.3em);
-  margin: max(0vw, 0em) max(0.7vw, 0.7em) max(0vw, 0em) auto;
+  padding: max(0.9vw, 0.9em);
   background-color: #333333;
   border-radius: max(0.2vw, 0.2em);
   width: -webkit-fit-content;

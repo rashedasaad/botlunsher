@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/all.min.css') }}">
     <!-- style.css -->
     <link rel="stylesheet" href="{{ URL::asset('scss/main/main.css') }}">
-
+    
     <!-- Font-Googel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;1,500&family=Open+Sans:ital,wght@0,600;1,500;1,600&display=swap"
         rel="stylesheet">
 </head>
-<body>
+<body id="body">
     <!-- Start nav bullets -->
     <div class="nav-bullets">
         <div id="Home_none" class="bullet" data-section=".Home">
@@ -348,6 +348,7 @@
     </footer>
     <!-- End Foter -->
 
+    <script src="{{ URL::asset('js/screen.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
     <script src="{{ URL::asset('js/nav_bar.js') }}"></script>
     <script src="{{ URL::asset('js/function.js') }}"></script>

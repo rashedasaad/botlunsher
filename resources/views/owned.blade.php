@@ -1,3 +1,6 @@
+<?php
+$user = session("user_session");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +28,7 @@
 
     @if (session('statusbad'))
 
-    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
+    <p style="display: none"  class="error">{{ session('statusbad')}}</p>
     <p style="display: none"  class="boolean">{{ session('bool') }}</p>
 
     @elseif (session('status'))  
@@ -42,11 +45,13 @@
                 </div>
                 <div class="leftt">
                     <div class="product">
-                        <h1>{{ session("user_session")["username"] }}</h1>
+                        <h1>{{ $user["username"] }}</h1>
                     </div>
                     <div class="link">
                         <div class="top">
+                            @if ($user["google"] == false)
                             <a href="/update">Account</a>
+                            @endif
                             <a class="activ" href="/update">My Bots</a>
                             <a href="/product">back to store</a>
                         </div>
@@ -62,7 +67,9 @@
                                     <h1>Are you sure that you want to delete your account?</h1>
                                     <form action="{{ route('delete') }}" method="POST">
                                         @csrf
-                                        <input placeholder="password" type="password" name="password">
+                                        @if ($user["google"] == false)
+                                        <input placeholder="password" type="password" name="password"> 
+                                        @endif
                                         <div class="butoon">
                                             <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                             <input class="sub" type="submit" value="Delete">
@@ -88,8 +95,11 @@
                                 <h2><?php print_r($response->product_name); ?></h2>
                                 <span class="title"></span>
                                 <p style="display: none" class="plan_id"><?php print_r($response->plan_id); ?></p>
-                                <p style="display: none" class="timer"><?php print_r($response->will_end_at); ?></p>
-                                <a class="cancel" href="#">cancel</a>
+                                <p style="display: none" class="timer"><?php echo isset($response->will_end_at) != false ? $response->will_end_at: "free"  ?></p>
+                                
+                                 @php
+                                     echo isset($response->will_end_at) != false ?  '<a class="cancel" href="#">cancel</a>' : null;
+                                 @endphp
                             </div>
                         @endforeach
 
@@ -102,7 +112,9 @@
                                 <h1>Are you sure that you want to cancle your subscription?</h1>
                                 <form id="form_cancel" action="" method="POST">
                                     @csrf
+                                    @if ($user["google"] == false)
                                     <input placeholder="password" type="password" name="password">
+                                    @endif
                                     <div class="butoon">
                                         <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
                                         <input class="sub" type="submit" value="submit">
@@ -229,21 +241,11 @@
         };
 
         let error = document.querySelector(".error")
+        let boolean = document.querySelector(".boolean")
 
 
         if (error.value != "") {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: error.value,
-                showConfirmButton: false,
-                timer: 3000
-            })
-        }
-
-
-        if (error.value != "") {
-            if (bool.textContent == 1) {
+            if (boolean.textContent == 1) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -251,7 +253,7 @@
                     showConfirmButton: false,
                     timer: 3000
                 })
-            } else if (bool.textContent == 0) {
+            } else if (boolean.textContent == 0) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',

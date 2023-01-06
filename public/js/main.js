@@ -105,7 +105,7 @@ landing_page.hanterScroll(4500, 3500, async () => {
     landing_page.target.style.display = `none`;
     aboute.target.style.display = `block`;
 
-    
+
     nav_bullets.target.style = "filter: blur(0px);transition: .3s;position: absolute;gap: 25px;background-color: rgba(24, 21, 55, 0.44);backdrop-filter: blur(12px);padding: max(1vw, 1em);box-shadow: max(0vw, 0em) max(0vw, 0em) max(2vw, 2em) max(-1.6vw, -1.6em) #00000075;display: flex;left: 50%;flex-flow: column wrap;place-content: center space-between;transform: translate(-50%, -50%);align-items: center;z-index: 1;"
     for (let h6 of navBullets_h6) {
         h6.style = "height: 0;width: 0;right: 0;border-style: solid;border-width: 0;border-radius: 0;top: 0;transform: translateY(0%);border-color: transparent transparent transparent transparent;";
@@ -213,7 +213,7 @@ aboute.hanterScroll(4500, 4500, async () => {
     }
     for (let bullet of bullets) {
         bullet.style = "position: relative;border-radius: 50%;width: max(2vw, 2em);height: max(2vw, 2em);background-color: transparent;border: max(0.2vw, 0.2em) solid white;margin: max(1vw, 1em) max(1vw, 1em) max(1vw, 1em) max(1vw, 1em);cursor: pointer;"
-        
+
     }
     for (let tooltip of tooltips) {
         tooltip.style = "transition: ease 2s;background-color: #6C63FF;width: max(7vw, 7em);color: white; padding: max(0.5vw, 0.5em) max(1vw, 1em);position: absolute;right: max(3vw, 3em);font-size: max(1vw, 1em);top: max(-0.2vw, -0.2em);text-align: center;cursor: default;pointer-events: none;border-radius: max(0.2vw, 0.2em);display: none;"
@@ -276,19 +276,19 @@ discord.hanterScroll(4000, 2500, async () => {
     for (let tooltip of tooltips) {
         tooltip.style = "transition: ease 2s;display: block;position: inherit;font-size: max(1.5vw, 1.5em);text-align: center;padding: 0;cursor: default;right: 0;pointer-events: none;background-color: transparent;width: fit-content;top: 0; color: #ecb365;"
     }
-    
+
     effect_children.target.style = "transition: ease 2s; transform: rotate(137deg); opacity: 1;";
     for (let effect_c of span) {
         effect_c.style.backgroundColor = `#ECB365`;
         effect_c.style.boxShadow = "0 0 0 10px rgb(11 11 11 / 27%), inset 0 0 8px #000000, 0 0 100px #ecb365";
     }
     hiedPolitudById("Aboute_none");
-    
+
     for (let card1_lefts of card1_left) {
         card1_lefts.style = "transition: ease 2s; color: #ECB365";
     }
     aboute.target.style.display = `block`;
-    
+
     await sleep(500)
     for (let left of lefts) {
         left.style = "transition: ease 2s; left: 0;";
@@ -391,7 +391,7 @@ Pricing.hanterScroll(2500, 3000, async () => {
     for (let tooltip of tooltips) {
         tooltip.style = "transition: ease 2s;display: block;position: inherit;font-size: max(2vw, 2em);text-align: center;padding: 0;cursor: default;right: 0;pointer-events: none;background-color: transparent;width: fit-content;top: 0; color: white;"
     }
-    
+
     hiedPolitudById("footer_none");
     Pricing.target.style.display = `none`;
     await sleep(500);
@@ -418,15 +418,16 @@ Pricing.hanterScroll(2500, 3000, async () => {
     for (let tooltip of tooltips) {
         tooltip.style = "transition: ease 2s;display: block;position: inherit;font-size: max(1.5vw, 1.5em);text-align: center;padding: 0;cursor: default;right: 0;pointer-events: none;background-color: transparent;width: fit-content;top: 0; color: #6c63ff;"
     }
-    
+
     effect_container.target.style = " z-index: 0;";
     effect_children.target.style = "transition: ease 2s; transform: rotate(227deg); opacity: 1;";
+
     await sleep(500);
     for (let effect_c of span) {
         effect_c.style.backgroundColor = `#6C63FF`;
         effect_c.style.boxShadow = "0 0 0 0px rgb(11 11 11 / 0%), inset 0 0 20px 0px #000000, inset 0 0 77px 0px #000000";
     }
-    nav_bullets.target.style = "filter: blur(0px);position: absolute; background-color: rgba(24, 21, 55, 0.4);backdrop-filter: blur(30px);padding: max(1.4vw, 1.4em);box-shadow: max(0vw, 0em) max(0vw, 0em) max(1vw, 1em) max(-2vw, -2em) black;display: flex;gap: 75px;left: 50%;width: 80%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -50%);transition: all 1.3s ease 0s;";
+    nav_bullets.target.style = "filter: blur(0px);position: absolute;background-color: rgba(24, 21, 55, 0.4);backdrop-filter: blur(30px);padding: max(1vw, 1em);box-shadow: black 0px 0px 16px -3px;display: flex;left: 50%;width: 90%;flex-flow: row wrap;align-content: center;transform: translate(-50%, -50%);transition: all 1.3s ease 0s;";
     for (let bullet of bullets) {
         bullet.style = " position: relative;cursor: pointer;width: fit-content;font-size: max(1vw, 1em);height: fit-content;margin: 20px auto; border: none;border-radius: 0px;"
     }

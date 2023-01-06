@@ -27,6 +27,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 445px) {
+  .login {
+    padding: max(3vw, 3em) max(1vw, 1em) max(2vw, 2em);
+  }
+}
 @media (max-width: 1040px) {
   .login {
     width: 60%;
@@ -200,6 +205,7 @@ body {
   width: 100%;
   padding: max(1vw, 1em) max(0vw, 0em);
   gap: max(2vw, 2em);
+  text-align: center;
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -208,15 +214,21 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.login .login-container .AllForm .button input {
-  background-color: #00ce79;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+@media (max-width: 1281px) {
+  .login .login-container .AllForm .button {
+    display: flex;
+    flex-direction: column;
+  }
 }
-.login .login-container .AllForm .button a:first-child,
-.login .login-container .AllForm .button input:last-child {
+.login .login-container .AllForm .button .link_Di {
+  gap: max(2vw, 2em);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+}
+.login .login-container .AllForm .button .link_Di input {
   background-color: #00ce79;
   color: black;
   font-weight: bold;
@@ -229,25 +241,49 @@ body {
   width: fit-content;
   transition: 0.3s;
   border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-@media (max-width: 470px) {
-  .login .login-container .AllForm .button a:first-child .button a:first-child,
-.login .login-container .AllForm .button a:first-child .button input:last-child,
-.login .login-container .AllForm .button input:last-child .button a:first-child,
-.login .login-container .AllForm .button input:last-child .button input:last-child {
-    font-size: 8px;
-  }
+.login .login-container .AllForm .button .link_Di .google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
-.login .login-container .AllForm .button input:last-child:hover {
-  background-color: rgba(0, 206, 120, 0.7647058824);
-  cursor: pointer;
+.login .login-container .AllForm .button .link_Di .google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
 }
-@media (max-width: 470px) {
-  .login .login-container .AllForm .For,
-.login .login-container .AllForm .button {
-    font-size: 11px;
-    padding: 12px 1px 0px;
-  }
+.login .login-container .AllForm .button .link_Di .google-btn .google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: -8px;
+  width: 18px;
+  height: 18px;
+}
+.login .login-container .AllForm .button .link_Di .google-btn .btn-text {
+  color: #fff;
+  margin: 0 0px 0 45px;
+  padding: 11px 0;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+  background-color: transparent;
+  border: none;
+}
+.login .login-container .AllForm .button .link_Di .google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.login .login-container .AllForm .button .link_Di .google-btn:active {
+  background: #1669F2;
 }
 .login .createAccount {
   position: absolute;
@@ -526,10 +562,12 @@ body {
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  border: none;
+}
+@media (max-width: 875px) {
+  .login .createAccount .create .button {
+    flex-direction: column;
+  }
 }
 .login .createAccount .create .button input {
   padding: max(1vw, 1em) max(1vw, 1em);
@@ -537,6 +575,11 @@ body {
   background-color: #00ce79;
   font-size: max(1vw, 1em);
   font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: none;
 }
 @media (max-width: 1698px) {
   .login .createAccount .create .button input {
