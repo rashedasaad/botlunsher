@@ -28,7 +28,7 @@ class UpdateController extends Controller
         $user_session = $request->session()->get('user_session');
 
         $username =  $request->input("username");
-        $last_password =  $request->input("last_password");
+     
         $password =   $request->input("newPasswrod");
         $confirm_password =  $request->input("confirm_password");
         $email =   $request->input("email");
@@ -36,7 +36,7 @@ class UpdateController extends Controller
 
 
 
-        $request->validate([
+        $form = $request->validate([
             "last_password" => "required",
         ]);
 
@@ -48,9 +48,9 @@ class UpdateController extends Controller
             }        
 
         }
-        if ($last_password != "") {
+        if ($form["last_password"] != "") {
 
-            if (FuncController::passwordfilter($last_password) == "fail") {
+            if (FuncController::passwordfilter($form["last_password"]) == "fail") {
                 return redirect("/update")->with('statusbad', "The password is not vaild");
             }
         }
@@ -62,11 +62,11 @@ class UpdateController extends Controller
         }
 
 
-        $email =  FuncController::xssfilter($email);
+     
         $username =  FuncController::xssfilter($username);
         $id = $user_session["user_id"];
 
-        $update = $this->update($username, $password, $confirm_password, $last_password, $email, $id);
+        $update = $this->update($username, $password, $confirm_password, $form["last_password"], $email, $id);
 
 
         if ($update->res == "rash_2") {

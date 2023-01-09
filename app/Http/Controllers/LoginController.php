@@ -76,20 +76,22 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+      $form = $request->validate([
             "loginusername" => "required",
             "loginpassword" => "required",
             'g-recaptcha-response' => 'recaptcha'
         ]);
 
-        $username_or_email =  $request->input("loginusername");
-        $password =   $request->input("loginpassword");
 
-        if (FuncController::passwordfilter($password) == "fail") {
+
+        if (FuncController::passwordfilter($form["loginpassword"]) == "fail") {
             return redirect("/login")->with('statusbad', "The password is not correct");
         }
+        if (FuncController::emailfilter($form["loginusername"]) == "fail") {
+            return redirect("/login")->with('statusbad', "The email is not invalid");
+        }
 
-        $login = $this->loginpost($username_or_email, $password);
+        $login = $this->loginpost($form["loginusername"], $form["loginpassword"]);
 
         if ($login->res == "rash_2") {
             return redirect("/login")->with('statusbad', $login->msg);
@@ -117,20 +119,15 @@ class LoginController extends Controller
 
     public function storeforgetpassword(Request $request)
     {
-        $request->validate([
+      $form = $request->validate([
             "email" => "required",
             'g-recaptcha-response' => 'recaptcha'
         ]);
-
-
-        $email =   $request->input("email");
-
-        if (FuncController::emailfilter($email) == "fail") {
-            return redirect("/forgetpassword")->with('statusbad', "The email is not vaild");
+        if (FuncController::emailfilter($form["email"]) == "fail") {
+             return redirect("/forgetpassword")->with('statusbad', "The email is not vaild");
         }
 
-        $email =  FuncController::xssfilter($email);
-
+        $email =  FuncController::xssfilter($form["email"]);
 
         $forgetpass =  $this->forgetpassword($email);
 

@@ -130,21 +130,25 @@ class AllProcductController extends Controller
 
 
           if ($year[$i]->product_name == $month[$m]->product_name) {
+   
             if ($year[$i]->owned == true) {
-              array_push($storges,  ["owend" => $year[$i]->owned, "product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+              array_push($storges,  ["owend" => $year[$i]->owned,"plan_interval" => $year[$i]->plan_id, "product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
             } elseif ($month[$i]->owned == true) {
-              array_push($storges,  ["owend" => $month[$m]->owned, "product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+              array_push($storges,  ["owend" => $month[$m]->owned,"plan_interval" => $month[$m]->plan_id, "owend" => $month[$m]->owned,"product_name" => $month[$m]->product_name, "year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id,"product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
             } else {
-              array_push($storges,  ["owend" => false, "product_name" => $month[$m]->product_name,"year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id, "product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
+              array_push($storges,  ["owend" => false, "plan_interval" => "nothing", "product_name" => $month[$m]->product_name,"year_plan" => $year[$m]->plan_id, "month_plan" => $month[$m]->plan_id, "product_id" => $month[$m]->product_id, "details" => $month[$m]->details, "year_price" => $year[$i]->price, "month_price" => $month[$m]->price, "img" => $month[$m]->img, "vid" => $month[$m]->vid]);
             }
+        
           }
         }
       }
       for ($d = 0; $d < count($free); $d++) {
         if ($free[$d]->owned == true) {
-          array_push($storges,  ["owend" => $free[$d]->owned, "product_name" => $free[$d]->product_name,  "product_id" =>"free" , "details" => $free[$d]->details, "img" => $free[$d]->img, "vid" => $free[$d]->vid]);
+          array_push($storges,  ["owend" => $free[$d]->owned, "plan_interval" => $free[$d]->plan_id, "product_name" => $free[$d]->product_name,  "product_id" =>"free" , "details" => $free[$d]->details, "img" => $free[$d]->img, "vid" => $free[$d]->vid]);
         }
       }
+
+
 
       $request->session()->put("allproducts", $storges);
      

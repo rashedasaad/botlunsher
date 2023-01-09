@@ -22,7 +22,7 @@ class registerController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
+      $form =  $request->validate([
             "regusername" => "required",
             "regemail" => "required",
             "regpassword" => "required",
@@ -30,47 +30,44 @@ class registerController extends Controller
             'g-recaptcha-response' => 'recaptcha'
         ]);
 
-        $username =  $request->input("regusername");
-        $email =   $request->input("regemail");
-        $password =   $request->input("regpassword");
-        $repassword =   $request->input("regrepassword");
 
-        if ($password != $repassword) {
+
+        if ( $form["regpassword"] != $form["regrepassword"]) {
             return redirect("/login")->with('statusbad', "The password is not the matching");
         }
-        if (FuncController::passwordfilter($password) == "fail") {
+        if (FuncController::passwordfilter($form["regpassword"]) == "fail") {
            
             return redirect("/login")->with('statusbad', "The password is not strong");
         }
-        if (FuncController::username($username) == "fail") {
+        if (FuncController::username($form["regusername"]) == "fail") {
 
   
             return redirect("/login")->with('statusbad', "This is invalid username");
         }    
        
-        if (strlen($username) > 30) {
+        if (strlen($form["regusername"]) > 30) {
             
   
             return redirect("/login")->with('statusbad', "Please Write fewer letters");
         }
-        if (strlen($username) < 4) {
+        if (strlen($form["regusername"]) < 4) {
             
        
             return redirect("/login")->with('statusbad', "Please Write more leter");
         }
-        if (strlen($password) > 30) {
+        if (strlen($form["regpassword"]) > 30) {
             
       
             return redirect("/login")->with('statusbad', "The password is to long it's must be under 30");
         }
-        if (strlen($password) < 8) {
+        if (strlen("regpassword") < 8) {
           
             return redirect("/login")->with('statusbad', "the password small it mast be biggar an 4");
         }
  
-        if (FuncController::emailfilter($email) == "good") {
+        if (FuncController::emailfilter($form["regemail"]) == "good") {
             
-            $usercheck =  $this->usercheck(FuncController::xssfilter($username), FuncController::xssfilter($email), $password);
+            $usercheck =  $this->usercheck(FuncController::xssfilter($form["regusername"]), FuncController::xssfilter($form["regemail"]), $form["regpassword"]);
  
             if ($usercheck->res == "rash_1") {
 
@@ -86,20 +83,20 @@ class registerController extends Controller
    
                 $data = [
                     "subject" => env("APP_NAME"),
-                    "code_link" => "http://localhost:8000/user/verifiy/".$ver,
+                    "code_link" => "http://127.0.0.1:8000/user/verifiy/".$ver,
                     "body" => $code
                 ];
 
 
                try {
-                    Mail::to($email)->send(new verfiy($data));
+                    Mail::to($form["regemail"])->send(new verfiy($data));
                     $SS = User::updateOrCreate(
                         [
-                            'email' => $email,
+                            'email' => $form["regemail"],
                         ],
                         [
-                            'name' => $username,
-                            "password" =>  $password,
+                            'name' => $form["regusername"],
+                            "password" =>  $form["regpassword"],
                             "code_link" => $ver,
                             "code" => $code
                         ]

@@ -238,15 +238,15 @@ window.onload = (event) =>{
     })
     Array.from(configDiv.children).forEach((elm, i) => {
         var cloendElement = 0
-        const configData = JSON.parse(get('config_getter').textContent)
-        if(configData[i].content && configData != 'nothing'){
+        const configData = get('config_getter').textContent != 'nothing'?  JSON.parse(get('config_getter').textContent) : get('config_getter').textContent
+        if(configData[i]?.content && configData != 'nothing'){
             if(elm.dataset.ismany != 'true'){
                 if(configData[i].content == true){
                     elm.children[1].checked = true
                 } else {
                     elm.children[1].value = configData[i].content
                 }
-                elm.style.display = ''
+                // elm.style.display = ''
             } else {
                 configData[i].content.reverse().forEach((array, j) => {
                     if(j == 0){
@@ -284,19 +284,18 @@ window.onload = (event) =>{
                     const show = () =>{
                         allNotFromMain.forEach(config => {
                             if(config.dataset.from == indexElem){
-                                config.style.display = ''
+                                config.style.display = 'block'
                             }
                         })
                     }
-                    console.log(inputFaild.value)
-                    if((inputFaild.value == '') && ((inputFaild.type == 'text' && inputFaild.tagName  == 'INPUT') || (inputFaild.tagName == 'SELECT') || (inputFaild.tagName == 'TEXTAREA'))){
-                        hide()
-                    } else if ((!inputFaild.checked)  && ((inputFaild.type == 'checkbox' && inputFaild.tagName  == 'INPUT' ))){
-                        hide()
-                    } else if(inputFaild.checked  && ((inputFaild.type == 'checkbox' && inputFaild.tagName  == 'INPUT' ))){
+                    if(inputFaild.checked  && ((inputFaild.type == 'checkbox' && inputFaild.tagName  == 'INPUT' ))){
                         show()
                     } else if((inputFaild.value != '') && ((inputFaild.type == 'text' && inputFaild.tagName  == 'INPUT') || (inputFaild.tagName == 'SELECT') || (inputFaild.tagName == 'TEXTAREA'))) {
                         show()
+                    } else if((inputFaild.value == '') && ((inputFaild.type == 'text' && inputFaild.tagName  == 'INPUT') || (inputFaild.tagName == 'SELECT') || (inputFaild.tagName == 'TEXTAREA'))){
+                        hide()
+                    } else if ((!inputFaild.checked)  && ((inputFaild.type == 'checkbox' && inputFaild.tagName  == 'INPUT' ))){
+                        hide()
                     }
             }
             getMissing()

@@ -29,25 +29,25 @@
         </div>
         <div id="Aboute_none" class="bullet" data-section=".Aboute">
             <span></span>
-            <div class="tooltip">Aboute
+            <div class="tooltip">About
                 <h6></h6>
             </div>
         </div>
         <div id="discord_none" class="bullet" data-section=".discord">
             <span></span>
-            <div class="tooltip">discord
+            <div class="tooltip">Discord
                 <h6></h6>
             </div>
         </div>
         <div id="strore_none" class="bullet" data-section=".strore">
             <span></span>
-            <div class="tooltip">strore
+            <div class="tooltip">Store
                 <h6></h6>
             </div>
         </div>
         <div id="Pricing_none" class="bullet" data-section=".Pricing">
             <span></span>
-            <div class="tooltip">Pricing
+            <div class="tooltip">Prices
                 <h6></h6>
             </div>
         </div>
@@ -79,9 +79,11 @@
         <div class="overlay"></div>
         <div class="container">
             <div class="text-landing">
-                <h1> All <span> your </span> Bots inone place</h1>
-                <p>Lorem ipsum dolor Lorem ipsum dolor sit. Lorem ipsum dolor sit, amet consectetur adipisicing.sit
-                    amet consectetur. Lorem ipsum dolor sit amet.</p>
+                <h1> All <span> your </span> Bots in our ass</h1>
+                <p>in order to take care of your bots we make them sexually simulated
+                    <br>
+                    girl or boy we all will be horny
+                </p>
             </div>
             <div class="titel">
                 <p>facking Yofie smaa</p>

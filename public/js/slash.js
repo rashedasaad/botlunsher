@@ -57,7 +57,7 @@ let error = document.querySelector(".error")
 let bool = document.querySelector(".boolean")
 
 if (error.value != "" && bool.textContent != 0) {
-    if(bool.textContent == 1){
+    if(bool.textContent == true){
         Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -65,7 +65,7 @@ if (error.value != "" && bool.textContent != 0) {
         showConfirmButton: false,
         timer: 3000
         })
-    }else if(bool.textContent == 0){
+    }else if(bool.textContent == false){
         Swal.fire({
         position: 'top-end',
         icon: 'error',

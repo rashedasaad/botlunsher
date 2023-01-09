@@ -20,11 +20,10 @@ class VerifictionController extends Controller
 
     public function store(Request $request,$codelink)
     {
-        $request->validate([
+      $form = $request->validate([
             "code" => "required",
         ]);
 
-        $code =  $request->input("code");
 
          urldecode($codelink);
     
@@ -32,14 +31,14 @@ class VerifictionController extends Controller
 
         $user = User::where('code_link', $codelink)->first();
 
-        if ($user->code == $code) {
+        if ($user->code ==  $form["code"]) {
 
-            $sa =  $this->registeruser(FuncController::xssfilter($user->name), $user->password, $user->password,FuncController::xssfilter($user->email));
+            $registeruser =  $this->registeruser($user->name, $user->password, $user->password,$user->email);
 
-            if ($sa->res == "rash_2") {
-                return redirect("/")->with('statusbad', $sa->msg);
+            if ($registeruser->res == "rash_2") {
+                return redirect("/")->with('statusbad', $registeruser->msg);
             }
-            return redirect("/login")->with('status', $sa->msg);
+            return redirect("/login")->with('status', $registeruser->msg);
         } else {
             return redirect("/login")->with('statusbad', "The verifiy code is not vaild");
         };

@@ -13,9 +13,16 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    @if (session('statusbad'))
 
-    <p style="display: none"  class="error"></p>
-    <p style="display: none"  class="boolean"></p>
+    <p style="display: none"  class="error">{{ session('statusbad') }}</p>
+    <p style="display: none"  class="boolean">{{ session('bool') }}</p>
+
+    @elseif (session('status'))  
+    <p style="display: none"  class="error">{{ session('status') }}</p>
+    <p style="display: none" class="boolean">{{ session('bool') }}</p>
+    @endif
+
     <p id="config_getter" style="display:none;"><?php  echo htmlentities($is_config_there) ?></p> 
  
     <div id="configrate" class="alert_1">
@@ -72,6 +79,7 @@
                 <img id="image" alt="" src="{{ $finayl_array[0]["img"] }}">
                 <div class="text">
                     <h1><span id="name">{{ $finayl_array[0]["product_name"] }}</span> Bot</h1>
+                    <h1><span id="status">status: </span> {{ $botSatatus }}</h1>
                     <p id="cost"></p>
                 </div>
                 <div class="text_1">
@@ -79,9 +87,10 @@
                     <button id="explain" class="btn1">Explain</button>
                     <form style="display: inline-block" method="POST" action="{{ route("run_script") }}">
                         @csrf
+                        <input value="{{ $botSatatus == 'online' ? 'off' : 'on' }}" type="hidden" name="msg">
                         <input name="script_name" value="{{ $user_verion_config["script_name"] }}" type="hidden">
                         <input name="version" value="{{ $user_verion_config["script_vr_number"] }}" type="hidden">
-                        <button id="runScript" href="/ww" style="border-top-right-radius: 0; "class="btn1">Run</button>
+                        <button id="runScript" type = "submit" style="border-top-right-radius: 0; "class="btn1">{{ $botSatatus == 'online' ? 'Stop' : 'Run' }}</button>
                     </form>
                     <button id="configBtn" class="btn1">Confing</button>
                 </div>
